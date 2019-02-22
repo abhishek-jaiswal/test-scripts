@@ -1,0 +1,109 @@
+---
+  first_name: Abhishek
+  last_name: Jaiswal
+  physical_address: 4/3/h/46, Bhukailash Road Kolkata-700023 WB INDIA
+  email_address: abhishekjaiswal.kol@gmail.com
+  social_accounts:
+      - name: facebook
+        url: https://www.facebook.com/kumarabhishekjaiswal
+      - name: linkedin
+        url: https://www.linkedin.com/in/abhishek-jaiswal
+      - name: twitter
+        url: https://twitter.com/abhishek_jaisw
+      - name: github
+        url: https://github.com/jkabhishek/
+
+  summary:  "8+ years experience specializing in backend/infrastructure,
+        web development and computer security. Super nerd who loves Sublime, Vim,
+        Linux and OS X and enjoys to customize all of the development environment.
+        Interested in devising a better problem-solving method for challenging tasks,
+        and learning new technologies and tools if the need arises.<br/>
+        2+ years of experience in Openstack support and writing infrastructure as a code
+        using ansible and python, working knowledge of container and kubernetes"
+  experience:
+      - org_name: Terdata Labs
+        dates: Apr, 2018 - Sept, 2018
+        job_title: Software Engineer III [Python/Devops]
+        place: Hyderabad, Telangana, INDIA
+        roles_responsiblity: "Implemented python based web app to cater different needs .
+                              Implemented ELK Automation on ansible to add n host for monitoring.
+                              Worked on writing Vagrant files for different application.
+                              Worked on several POC projects in Docker, Kubernetes, ansible, focusing on high-availability, fault tolerance, and auto-scaling"
+      - org_name: Pramati Technologies
+        dates: Apr, 2015 - Mar, 2018
+        job_title: Senior Software Engineer [Python]
+        place: Hyderabad, Telangana, INDIA
+        roles_responsiblity: "Implemented djangorestframework RESTful API server for internal projects.
+                              Implemented Data driven Framework in python/djangorestframework frontend/backend.
+                              Worked on Automation Framework in Ansible to deploy Openstack for one of the largest Telecom Provider.
+                              Worked on several POC projects in Docker, Kubernetes, ansible, focusing on high-availability, fault tolerance, and auto-scaling.
+                              Developed an easy-to-use Payment module which connects to major PG(Payment Gateway)."
+      - org_name: MindFire Solutions
+        dates: Nov. 2012 - Apr. 2015
+        job_title: Software Engineer [Python]
+        place: Bhubaneswar, Orrisa, INDIA
+        roles_responsiblity: "Worked on several Odoo (formerly openerp) projects
+                              Worked on Customized ERP Application for Custom Brokerage and warehousing using odoo framework in python.
+                              Worked on Web based ERP Solutions for Importers and Exporters using PHP, EXTjs, Mysql."
+      - org_name: Acumen Consultancy PvtLtd
+        dates: Jun, 2010 - Nov. 2012
+        job_title: Web Engineer  [PHP]
+        place: Kolkata, WestBengal,  INDIA
+        roles_responsiblity: "Worked on IMS-Pharmastat, web based CMS using PHP (Codeigniter), Javascript, Mysql. (http://imspharmastat.fr/)
+                              Worked on UBI-France, Web Based Doctor Directory Listing using PHP (Codeigniter), Javascript, Mysql.
+                              Worked on Open2leads, Question and Answer Forum for B2B with social-networking features, Using  PHP (symfony), JavaScript, MySQL."
+  education:
+      - degree: Master of Computer Application (MCA)
+        institution: Institute Of Engineering \& management
+        location: Kolkata, WestBengal, INDIA
+        dates: 2009 - 2011
+        description: Major in Computer Applications
+
+      - degree: Bachelor of Computer Application (BCA)
+        institution: Acharya Institute of Management \& Sciences, Bangalore University
+        location: Bangalore, Karnatka, INDIA
+        dates: 2006 - 2009
+        description: Major in Computer Applications
+
+      - degree: Higher Secondary, PUC
+        institution: WBCHSE, (West Bengal Council of Higher Secondary Education)
+        location: Kolkata, WestBengal, INDIA
+        dates: 2004 - 2006
+        description: Accounts Major
+  skills:
+      - Thorough knowledge of -- Python, Ansible, Javascript, PHP, Openstack, Teraform
+      - adept at frameworks like -- django, webpy, flask
+      - Technically sound with -- Linux, Networking, Kubernetes, Docker
+      - Adept with tools and utilities like -- Pycharm, Sublime, Vim, Eclipse, Iterm
+      - Adroit with source code management using -- GIT, SVN, Gerrit
+      - High potential to utilize scripting languages -- HTML, XML, YAM
+      - Proficient in Operating Sytem like -- Windows xp/7/8, Ubuntu, OSX
+
+  achievements:
+      - name: RED HAT CERTIFIED SYSTEM ADMINISTRATOR IN RED HAT OPENSTACK
+        url: https://www.redhat.com/rhtapps/certification/verify/?certId=160-236-972
+        date: 2016
+
+      - name: Zend Certified Php5 Developer
+        url: http://www.zend.com/en/yellow-pages/ZEND023657
+        date: 2012
+
+      - name: Microsoft Certified Developer
+        url: #mpc_id-9784595
+        date: 2012
+
+      - name: certified in ERP-Essential (Microsoft Dynamics)
+        url: #
+        date: 2012
+
+      - name: Runner up Embedding System Programming inter-college held in IEM post-graduate level
+        url: #
+        date: 2010
+
+      - name: College Festival Organizer
+        url: #
+        date: 2007
+
+      - name: Undergraduate level College Festival organizer
+        url: #
+        date: 2007
