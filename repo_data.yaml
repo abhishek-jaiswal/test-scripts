@@ -1,0 +1,2935 @@
+data:
+- repo_description: CloudFormation Security Scanner
+  repo_full_name: cloudsploit/cloudformation
+  repo_languages:
+    JavaScript: 52015
+  repo_readme: "[![CloudSploit](https://cloudsploit.com/img/logo-big-text-100.png\
+    \ \"CloudSploit\")](https://cloudsploit.com)\n\nCloudSploit CloudFormation Scanner\n\
+    =================\n\n## Background\nCloudSploit CloudFormation Scanner is a static\
+    \ analysis tool for finding security vulnerabilities in CloudFormation templates.\n\
+    \n## Installation\nEnsure that NodeJS is installed. If not, install it from [here](https://nodejs.org/download/).\n\
+    \n```\ngit clone git@github.com:cloudsploit/cloudformation.git\n```\n\n## Running\n\
+    To use scanner, run the `index.js` file with the path to your CloudFormation JSON\
+    \ file. The CloudFormation Scanner only works on JSON, but you can easily convert\
+    \ your YAML templates using [CFN Flip](https://github.com/awslabs/aws-cfn-template-flip).\n\
+    \n```\nnode index.js <path-to-template>\n```\n\n## Adding Plugins\n\nPlugins are\
+    \ named for their resource, as defined in CloudFormation. You can easily add a\
+    \ new plugin by creating a file in `/plugins` with the name of the resource and\
+    \ `.js`. For example: `AutoScaling::AutoScalingGroup.js`.\n\nEach plugin must\
+    \ accept the following:\n\n1. `settings`: An object containing global settings\
+    \ for the scan (see `settings.json`)\n2. `resource`: The CloudFormation resource\
+    \ name from the template (ex: `MyAutoScalingGroup`)\n3. `cfObj`: The CloudFormation\
+    \ resource object containing the configuration settings\n4. `callback`: A function\
+    \ to call when completed processing\n\n```\nmodule.exports = function(settings,\
+    \ resource, cfObj, callback) {}\n```\n\nAfter processing the object, an array\
+    \ of results must be returned to the callback:\n\n```\nresults.push({\n\tstatus:\
+    \ 2,\n\tmessage: 'Autoscaling group is being launched in EC2 Classic. Only VPC\
+    \ should be used.',\n\tresource: resource\n});\n```\n\nThe `status` should be\
+    \ one of:\n\n* `0`: \"PASS\" - no security risk found\n* `1`: \"WARN\" - a potential\
+    \ security issue\n* `2`: \"FAIL\" - a severe security issue\n\nThe `message` should\
+    \ describe why the result was assigned and a short blurb about remediation.\n\n\
+    The `resource` should match the `resource` passed to the function."
+  repo_url: https://github.com/cloudsploit/cloudformation
+- repo_description: CloudSploit Freshsales integration
+  repo_full_name: cloudsploit/freshsales
+  repo_languages:
+    JavaScript: 4532
+  repo_readme: '# freshsales
+
+    CloudSploit Freshsales integration
+
+    '
+  repo_url: https://github.com/cloudsploit/freshsales
+- repo_description: null
+  repo_full_name: datacommunitydc/Datable_Portal
+  repo_languages:
+    CSS: 148397
+    HTML: 427
+    JavaScript: 29151
+    Python: 123327
+  repo_readme: "# Full Stack Agents Database Portal\n\n#### Backend Setup Guide\n\
+    * Install virtualenvwrapper\n```sh\n$ pip install virtualenvwrapper\n```\nFirst,\
+    \ some initialization steps. Most of this only needs to be done one time. \nYou\
+    \ will want to add the command to `source /usr/local/bin/virtualenvwrapper.sh`\
+    \ \nto your shell startup file, changing the path to virtualenvwrapper.sh \ndepending\
+    \ on where it was installed by pip.\n\n* source \n```sh \n$ source /usr/local/bin/virtualenvwrapper.sh\n\
+    ```\n\n* make ims virtual env\n```sh\n$ mkvirtualenv datable\n```\n\n* clone the\
+    \ repo\n```sh\n$ git clone https://github.com/GeneralInfluence/IMS.git\n```\n\
+    * go to backend folder\n```sh\n$ cd Datable_Portal/backend\n```\n* install requirements.txt\n\
+    ```sh\npip install -r requirements.txt\n```\n* sync database \n```sh\n$ python\
+    \ manage.py migrate\n```\n\n* start backend server\n```sh\n$ python manage.py\
+    \ runserver\n```\n\n\n\n* Access the backend at \n```sh\nhttp://localhost:8000\n\
+    ```\n\n\n* Access the login with the url\n```sh \nhttp://localhost:8000/accounts/login/\n\
+    ```\n\n#### Frontend Setup Guide\n\n* go to frontend folder\n```sh\n$ cd Datable_Portal/frontend\n\
+    ```\n\n* install node packages\n```sh\n$ npm install\n$ npm install --python=python2.7\n\
+    ```\n* start frontend server\n```sh\n$ npm start\n```\n\n* Access the frontend\
+    \ at \n```sh\nhttp://localhost:3000\n```\n\n#### Nginx Setup Guide\n\n* open nginx\
+    \ default file\n```sh\n$ sudo vi /etc/nginx/sites-available/default\n```\n* add\
+    \ our application server config\n```sh\nserver {\n   listen 3000 default_server;\n\
+    \n   root /.../frontend;\n   index index.html index.htm;\n\n   # Make site accessible\
+    \ from http://localhost/\n   server_name localhost;\n\n   location / {\n     \
+    \ try_files $uri /index.html;\n   }\n\n   location /datable_backend_app/ {\n \
+    \     proxy_pass http://localhost:8000/;\n   }\n\n  location /linkedin/ {\n  \
+    \    proxy_pass https://www.linkedin.com/;\n  }\n\n  location /twitter/ {\n  \
+    \    proxy_pass https://api.twitter.com/;\n  }\n  \n  location /meetup/ {\n  \
+    \    proxy_pass https://secure.meetup.com/;\n  }\n  \n  location /github/ {\n\
+    \      proxy_pass https://github.com/;\n  }\n}\n\n```\n\n* restart the nginx service\n\
+    ```sh\n  $ sudo service nginx restart\n```\n\n* Access the frontend at \n```sh\n\
+    \  http://127.0.0.1:3000/\n  \n  Please don't use localhost as some of the social\
+    \ login provider (like twitter, meetup etc.) don't support localhost for redirect_uri.\n\
+    ```\n\n:+1: :+1: :+1: :+1:\n"
+  repo_url: https://github.com/datacommunitydc/Datable_Portal
+- repo_description: null
+  repo_full_name: GeneralInfluence/AEConsole
+  repo_languages:
+    CSS: 88407
+    HTML: 56510
+    JavaScript: 63544
+  repo_readme: '# AEConsole'
+  repo_url: https://github.com/GeneralInfluence/AEConsole
+- repo_description: Amplified Expertise Database & API
+  repo_full_name: GeneralInfluence/AEDatabase
+  repo_languages:
+    Makefile: 1540
+    Python: 101071
+  repo_readme: '# Amplified Expertise Database &amp; API (AEDatabase)
+
+
+    `all make should run from root directory i.e, "AEDatabase/"`
+
+
+    ### Prerequisites
+
+    1. Docker pre install Installation Docs https://docs.docker.com/install/
+
+
+    To Build all images in project root directory i.e, `AEDatabase/` run
+
+    ```
+
+    make build
+
+    ```
+
+
+    To start AEDB app
+
+    ```
+
+    make  start-aedb
+
+    ```
+
+
+    To stop AEDB app
+
+    ```
+
+    make  stop-aedb
+
+    ```
+
+
+    To stop AEDB app
+
+    ```
+
+    make  restart-aedb
+
+    ```
+
+
+    To go to running container
+
+    ```
+
+    make attach-aedb
+
+    ```
+
+
+    ### Admin related command
+
+
+    to update new db file got to DB folder `AEDatabase/src/giae/aedb/AEDatabases`
+
+
+    ```
+
+    docker-compose up -d
+
+    ```
+
+
+    ### API Call
+
+    ```
+
+    http://52.165.21.31:5000/salesViz?prod_ids=[13049,%2011578,%2011579,%2010075,%208164]
+
+    ```
+
+    docker-compose up -d
+
+    scp aedbUnileverEcuador.db aedb@52.165.21.31:/home/aedb/AEDatabase/src/giae/aedb/AEDatabases
+
+    ```
+
+
+    to sync all models file, go to `AEDatabase/src/giae/aedb` and run
+
+
+    ```
+
+    scp -r AEModels/* aedb@52.165.21.31:/home/aedb/AEDatabase/src/giae/aedb/AEModels
+
+    ```
+
+
+    '
+  repo_url: https://github.com/GeneralInfluence/AEDatabase
+- repo_description: For building and training CPG NN models.
+  repo_full_name: GeneralInfluence/AEIntelligence
+  repo_languages:
+    Python: 30659
+  repo_readme: '# AEIntelligence
+
+    Amplified Expertise Deep Learning tools &amp; API
+
+
+    ```
+
+    pip install git+https://github.com/GeneralInfluence/AEIntelligence.git
+
+    ```
+
+
+    Dependencies:
+
+    - pandas
+
+
+    python3
+
+    ```
+
+    from gi import blah
+
+    blah.sayHello()
+
+    ```'
+  repo_url: https://github.com/GeneralInfluence/AEIntelligence
+- repo_description: Designed to mimic any call or reply to the AE Systems
+  repo_full_name: GeneralInfluence/AETest
+  repo_languages:
+    Python: 1328
+  repo_readme: '# AETest
+
+    Designed to mimic any call or reply to the AE Systems
+
+    '
+  repo_url: https://github.com/GeneralInfluence/AETest
+- repo_description: Inventory Management System
+  repo_full_name: GeneralInfluence/IMS
+  repo_languages:
+    CSS: 38451
+    HTML: 2607
+    JavaScript: 79906
+    Python: 71593
+    Shell: 554
+  repo_readme: "# IMS\nInventory Management System\nfor aws instance create sudo password\n\
+    ```sh\nsudo su\npasswd\n[type the password]\n```\n# Steps to Deploy IMS\n####\
+    \ 1. install GIT and clone the repository by the following command\n```sh\nsudo\
+    \ apt-get install git-core\ngit clone https://github.com/GeneralInfluence/IMS.git\n\
+    ```\n#### 2. Chekout to branch \n```\ncd IMS\ngit checkout <branch_name>\n```\n\
+    \n#### 3. Install Ansible \n```sh\nsudo apt-get install software-properties-common\n\
+    sudo apt-add-repository ppa:ansible/ansible\nsudo apt-get update\nsudo apt-get\
+    \ install ansible\n```\n#### 4. run the ansible automation to setup our environment\
+    \ \n```sh\nansible-playbook -i \"localhost,\" -c local -K install_docker.yaml\
+    \ -vvvv\n```\nit will install docker reboot the machine. again login and run \n\
+    \n```sh\nansible-playbook -i \"localhost,\" -c local -K run_build_ims.yaml -vvvv\n\
+    ```\n\n#### 5. verify containers are running \n```sh \ndocker ps -a\n```\n####\
+    \ 6. output of the above command should be like this\n```sh\nCONTAINER ID    \
+    \    IMAGE               COMMAND                  CREATED             STATUS \
+    \                 PORTS                      NAMES\n844600b76062        ims_backend_app\
+    \     \"python /manage.py\"      19 seconds ago      Up 18 seconds           0.0.0.0:5000->5000/tcp\
+    \     ims_backend\nfe01262ee848        ims_ims_frontend    \"/bin/sh -c '/usr/sbi\"\
+    \   39 minutes ago      Up 18 seconds           0.0.0.0:80->80/tcp         ims_frontend\n\
+    288be95afcc5        mongo:3.0.2         \"/entrypoint.sh mongo\"   39 minutes\
+    \ ago      Up 19 seconds           0.0.0.0:27017->27017/tcp   mongodb\n```\n####\
+    \ 7. you need to run webpack\n```\ncd /home/ubuntu/IMS/ims_frontend\nwebpack\n\
+    ```\n\n# FAQ \n#### how to list all running docker processs\n```sh\ndocker ps\
+    \ -a\n```\n#### how to list all docker images\n```sh\ndocker images\n```\n\n```sh\n\
+    sudo docker rm -f $(sudo docker ps -a -q)\nsudo docker rmi -f $(sudo docker images\
+    \ -q)\n```\nhttp://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo\n\
+    \n# how to install S3 backup procedure\n#### install awscli\n```sh\npip install\
+    \ awscli\n```\n#### configure awscli\n```sh\naws configure\n```\n\n> <dl>\n  <dt>\
+    \ provide the following details on promt </dt>\n  <dd> AWS Access Key ID : [YourSuperSecretAccessKeyID]\
+    \ </dd>\n  <dd> AWS Secret Access Key : [YourSuperSecretAccessKeyI] </dd>\n  <dd>\
+    \ Default region name : us-west-2 / [Your-Prefer-region-Name] </dd>\n  <dd> Default\
+    \ output format: table </dd> \n  <em> you can chose between json | text | table\
+    \ </em>\n\n\n</dl>\n\n> run the following command to list all buckets\n\n```sh\n\
+    aws s3 ls\n# to list data inside any bucket you can run with bucket-name for ex\n\
+    aws s3 ls s3://inv-mngt-sys \n```\n#### run the automation to add to cronjobs\
+    \ which will take atke nightly backups\n\n```sh\nansible-playbook -i \"localhost,\"\
+    \ -c local -K set_ims_cronjob.yaml\n```\n> verify by running the command \n```sh\n\
+    sudo crontab -l\n#Ansible: Daily DB backups\n#0 3 * * * /home/ubuntu/IMS/db_backup.sh\n\
+    ```\n\n\n\n# Flask Project\n\n#### Backend Setup Guide\n* Install virtualenvwrapper\n\
+    ```sh\n$ pip install virtualenvwrapper\n```\nFirst, some initialization steps.\
+    \ Most of this only needs to be done one time. \nYou will want to add the command\
+    \ to `source /usr/local/bin/virtualenvwrapper.sh` \nto your shell startup file,\
+    \ changing the path to virtualenvwrapper.sh \ndepending on where it was installed\
+    \ by pip.\n\n* source \n```sh \n$ source /usr/local/bin/virtualenvwrapper.sh\n\
+    ```\n\n* make ims virtual env\n```sh\n$ mkvirtualenv ims\n```\n\n* clone the repo\n\
+    ```sh\n$ git clone https://github.com/GeneralInfluence/IMS.git\n```\n* go to ims\
+    \ folder\n```sh\n$ cd IMS\n```\n* install requirements.txt\n```sh\npip install\
+    \ -r backend_app/requirement.txt\n```\n* create configuration file \n```sh\n$\
+    \ cp backend_app\\config\\config.cfg.sample backend_app\\config\\config.cfg\n\
+    ```\n* start backend server\n```sh\n$ python manage.py\n```\n\n* Access the backend\
+    \ at \n```sh\nhttp://localhost:5000/site-map\n```\n\n\n#### nginx conf\n\n```\n\
+    # Add /usr/local/etc/nginx/servers/ims_9001\nserver {\n        listen 9001 default_server;\n\
+    \        #listen [::]:80 default_server ipv6only=on;\n\n        #root /Users/abhishekj/projects/aic/opsimple_gerrit/aic_gamma_frontend_new/app;\n\
+    \        root /Users/abhishekk/projects/tmp/IMS/ims_frontend/src;\n        index\
+    \ index.html index.htm;\n\n        # Make site accessible from http://localhost/\n\
+    \        server_name localhost;\n\n        location / {\n                # First\
+    \ attempt to serve request as file, then\n                # as directory, then\
+    \ fall back to displaying a 404.\n                try_files $uri $uri/ =404;\n\
+    \        }\n\n        location /app/ {\n                proxy_pass       http://localhost:5000/;\n\
+    \        }\n}\n```\n:+1: :+1: :+1: :+1:"
+  repo_url: https://github.com/GeneralInfluence/IMS
+- repo_description: For pulling and organizing data pulled from offline events for
+    predictive analytics use.
+  repo_full_name: GeneralInfluence/OfflineInfluence
+  repo_languages:
+    CSS: 78156
+    HTML: 22475
+    JavaScript: 159699
+    Python: 133036
+  repo_readme: "# OfflineInfluence\nFor pulling and organizing data pulled from offline\
+    \ events for predictive analytics use.\n\n## Set Environment files\nThis app uses\
+    \ the DC2 meetup-API and contactually-API keys to populate databases. For security\
+    \ reasons, these keys are not shared on github, please contact the owner or a\
+    \ DC2 Officer. \n\nOnce keys are acquired, create a `.env` file at the top directory\
+    \ (i.e. OfflineInfluence) level and set the app environment variables by running:\n\
+    - `source ./.env`\n\n## Update the database\nThe `bin` directory contains a script\
+    \ to import data from the various sources.\n\n- `python importData.py --meetup`\
+    \ update database with data from meetup.com\n- `python importData.py --nvite .../OfflineInfluence/data/nvite`\
+    \ update database with data from nvite files\n\n# Development\n## Virtual environment\n\
+    Create virtualenv using your preferred method. These commands are required for\
+    \ conda:\n```\nconda create -n offline-influence python=3.5\nconda install numpy\n\
+    conda install pandas\nsource activate offline-influence\ncd OfflineInfluence\n\
+    pip install -r deployment/pip-requirements\n```\n\n## Setup Linux environment\n\
+    In order to run Django and to access the different APIs, a few environment variables\
+    \ must be set. \n\n- `DJANGO_SECRET_KEY`: you can get random keys generated here:\
+    \ http://randomkeygen.com/\n- `MEETUP_API_DC2`: key to access the meetup.com API\n\
+    - `CONTACTUALLY_API_DC2`: key to access Contactually API\n\n**You must not include\
+    \ these keys in the repository!**\n\n## Django\nThe `manage.py` file is in the\
+    \ `src` directory. \n\n### Django settings\nThe settings files are in the `config.settings`\
+    \ directory.\n\n- `base.py`: Common settings required for development and production\
+    \ settings\n- `local.py`: Use these settings for a local development environment.\
+    \ These will use a SQLite database.\n- `production.py`: Settings to be used in\
+    \ a production environment. These will use a Postgres database.\n\n### Database\
+    \ management\nAt initial checkout and everytime the models file changes, run the\
+    \ following command.\n```\npython manage.py makemigrations offlineInfluence\n\
+    ```\nAfter that, run the migration of the database.\n```\npython manage.py migrate\n\
+    ```\nDo not checkin the database into the repository.\n\n## Frontend app\nTo run\
+    \ the frontend app use the following commands:\n```\ncd OfflineInfluence/frontend_app\n\
+    npm install\nnpm run-script dev \n ```\nIn addition start the django server using:\n\
+    ```\ncd OfflineInfluence/src\npython manage.py runserver 8080\n```\n\n\n\n# After\
+    \ an update from github\n```\ncd OfflineInfluence\npip install -r deployment/pip-requirements\n\
+    cd src\npython manage.py migrate\npython manage.py createsuperuser      # I created\
+    \ user admin\npython manage.py runserver 127.0.0.1:8000\n```\nFollow instructions\
+    \ http://django-allauth.readthedocs.io/en/latest/installation.html#post-installation\n\
+    \n1. Add a Site for your domain, matching settings.SITE_ID (django.contrib.sites\
+    \ app). \n2. For each OAuth based provider, add a Social App (socialaccount app).\n\
+    3. Fill in the site and the OAuth app credentials obtained from the provider.\n\
+    \n```\nUPDATE django_site SET DOMAIN = '127.0.0.1:8000', name = 'OfflineInfluence'\
+    \ WHERE id=1;\nINSERT INTO socialaccount_socialapp (provider, name, secret, client_id,\
+    \ `key`)\nVALUES (\"meetup\", \"meetup.com\", \"--put-your-own-app-secret-here--\"\
+    , \"--put-your-own-app-id-here--\", '');\nINSERT INTO socialaccount_socialapp_sites\
+    \ (socialapp_id, site_id) VALUES (1,1);\n```\n\n# Using elastic search\nStart\
+    \ the elastic search server\n```\nsudo docker-compose run --rm --service-ports\
+    \ elasticsearch\n```\nEnter the django shell and run elastic searches.\n```\n\
+    source activate offlineinf\npython src/manage.py shell\nfrom offlineInfluence\
+    \ import es \neq = es.EsQueryBase() \nqry = eq.prepare_exact_query('name', \"\
+    Aaron M\")\nqry = eq.prepare_like_query('name', \"Aaron M\")\ndata = eq.query()\n\
+    for i in data: print(i[\"_source\"][\"name\"]) \n```\n"
+  repo_url: https://github.com/GeneralInfluence/OfflineInfluence
+- repo_description: null
+  repo_full_name: GeneralInfluence/VoterEx
+  repo_languages:
+    CSS: 144470
+    HTML: 2281
+    JavaScript: 449722
+    Python: 98072
+  repo_readme: '# VoterEx
+
+    # https://github.com/closeio/flask-mongorest/blob/master/example/app.py'
+  repo_url: https://github.com/GeneralInfluence/VoterEx
+- repo_description: Acceptance test for todo backend
+  repo_full_name: jkabhishek/acceptance-test
+  repo_languages:
+    JavaScript: 3766
+  repo_readme: "# DevOps Learning Initiative #DevOpsInitiative\nThis project is a\
+    \ part of devops learning initiave to get all related project\nsearch #devOpsInitiative\n\
+    1.  Test\n2.  Build\n3.  Release\n4.  Deploy\n\n# Acceptance Test\nThe program\
+    \ is written in Javascript to which will act as Acceptance Testing for \n[Tododbackend](https://github.com/abhishek-jaiswal/todobackend)\n\
+    It is written for learning purpose to run acceptance test jenkins Build pipeline\n\
+    \n### 1.  Setup Guide\n```\n# install dependencies\nsudo apt-get update\n# clone\
+    \ the repo \ngit clone https://github.com/abhishek-jaiswal/acceptance-test.git\n\
+    \n# asuume that you have already install nodejs\n# cd acceptance-test\nnpm install\
+    \ \nnpm test\n```\n\n"
+  repo_url: https://github.com/jkabhishek/acceptance-test
+- repo_description: Ansible module for libvirt api
+  repo_full_name: jkabhishek/ansible-libvirt
+  repo_languages:
+    Python: 12231
+  repo_readme: "nsible-libvirt\nAnsible module for libvirt api\n\n# Modules\nwe are\
+    \ currently providing :-\n* virtinstall  for provision new virtual machines \n\
+    * qemu-img for QEMU disk image utility \n* \n\n# Documentation \n\n#### module:\
+    \ virtinstall\n###### description: Launch the VMs on OVS switch with portgroup\n\
+    \n| Field          | required       | description  |\n| :------------- |:--------------\
+    \ | :------------|\n| name           | true      | Name of the Virtual Machine\
+    \ |\n| ram            | true      | Physical memory |\n| vcpus          | true\
+    \      | Number of Virtual CPUs |\n| disk           | true      | disk information\
+    \ |\n| network        | true      | Required networks (input as dict with portgroup)\
+    \ | \n| virt_type      | false     | type of hypervisior default is \"kvm\" |\n\
+    | os_type        | false     | operating system type default linux |\n| pxe  \
+    \          | false     | Bootstrap with pxe server | choices: [ \"True\", \"False\"\
+    \ ] |\n| import_image   | false     | launch vm from image default value is no\
+    \ | \n| force          | false     | If yes, allows to create new VM and override\
+    \ the old VM choices: [ \"yes\", \"no\" ] |\n\n\n#### module: qemu-img\n######\
+    \ description: This module creates raw and volume storage disk\n\n| Field    \
+    \      | required       | description  |\n| :------------- |:-------------- |\
+    \ :------------|\n| name           | -         | Name of volume(Required when\
+    \ disk_type is volume) |\n| dest           | -         | path of raw disk( Required\
+    \ when disk_type is raw) |\n| format         | true      | format of image(img/qcow2)|\n\
+    | disk_type      | true      | type of disk(raw or volume) |\n| pool         \
+    \  | -         | pool name(required if disk_type is volume) | \n| src_img    \
+    \    | -         | path of the source image( Required when state=convert) |\n\
+    | dest_img       | -         | path of the destination image( Required when state=convert)\
+    \ |\n| size           | true      | size of the disk and volume |\n| state   \
+    \       | true      | choices=['present','convert', 'absent'] | \n| force    \
+    \      | false     | allows to create new disk and volume to override already\
+    \ exists choices: [ \"yes\", \"no\" ] |\n\n# example\n###### Create a new VM with\
+    \ bootstrap from PXE.\n```yaml\n- virtinstall:\n    name: test1\n    ram: 1024\n\
+    \    vcpus: 2\n    virt_type: kvm\n    pxe: True\n    disk: ['/var/lib/libvirt/images/osdisk.img','/var/lib/libvirt/images/appdisk.img']\n\
+    \    network:\n      pxe_interface:\n        bridge: virbr0\n        portgroup:\
+    \ br0\n```\n\n######## Create a new VM from an existing Image\n```yaml\n- virtinstall:\n\
+    \    name: test1\n    ram: 1024\n    vcpus: 2\n    virt_type: kvm\n    disk: ['/var/lib/libvirt/images/osdisk.img','/var/lib/libvirt/images/appdisk.img']\n\
+    \    network:\n      pxe_interface:\n        bridge: virbr0\n        portgroup:\
+    \ br0\n    image_import: True\n```\n\n###### Create a raw disk \n```yaml\n- qemu-img:\
+    \ dest=/var/lib/libvirt/images/test.img disk_type=raw  size=8G state=present force=yes\
+    \ \n```\n\n######## Create a volume \n```yaml  \n- qemu-img: name=testing.qcow2\
+    \ disk_type=volume  size=8G state=present force=yes \n```\n\n######## Convert\
+    \ image\n```yaml  \n- qemu-img: src_img=/var/lib/libvirt/images/test5.img dest_img=/var/lib/libvirt/images/test5.qcow2\
+    \ disk_type=qcow2 state=convert \n```\n\n######## Delete Raw Disk\n```yaml  \n\
+    - qemu-img: dest=/var/lib/libvirt/images/test4.img  disk_type=raw state=absent\
+    \ \n```\n\n######## Delete Volume Disk\n```yaml  \n- qemu-img:  name=test.qcow2\
+    \  disk_type=volume state=absent \n```\n"
+  repo_url: https://github.com/jkabhishek/ansible-libvirt
+- repo_description: readme
+  repo_full_name: jkabhishek/apna-pustakalaya
+  repo_languages: {}
+  repo_readme: "# \u0908-\u092C\u0941\u0915\nreadme\n\nCheck [gh-pages branch](https://github.com/jkabhishek/apna-pustakalaya/tree/gh-pages)\n"
+  repo_url: https://github.com/jkabhishek/apna-pustakalaya
+- repo_description: cli tool for aws using python , awscli
+  repo_full_name: jkabhishek/awspy
+  repo_languages:
+    Python: 1210
+  repo_readme: "# awspy\ncli tool for aws using python , awscli\n<!-- https://linuxacademy.com/howtoguides/posts/show/topic/14209-automating-aws-with-python-and-boto3\
+    \ -->\n\n# INTRODUCTION\nwe\u2019ll take a look at using Python scripts to interact\
+    \ with infrastructure provided by Amazon Web Services (AWS). You\u2019ll learn\
+    \ to configure a workstation with Python and the Boto3 library. Then, you\u2019\
+    ll learn how to programmatically create and manipulate:\n\nVirtual machines in\
+    \ Elastic Compute Cloud (EC2)\n\n# REQUIREMENTS\nBefore we get started, there\
+    \ are a few things that you\u2019ll need to put in place:\n\nAn AWS account with\
+    \ admin or power user privileges. Since we\u2019ll be creating, modifying, and\
+    \ deleting.\n\nAccess to a Linux shell environment with an active internet connection.\n\
+    \nSome experience working with Python and the Bash command line interface.\n\n\
+    # Install aws cli and boto3\npip install awscli boto3 -U --ignore-installed six\n\
+    \n# configure aws cli\nhttps://aws.amazon.com/developers/getting-started/python/\n\
+    \n\n# run \n\n./awspy --help"
+  repo_url: https://github.com/jkabhishek/awspy
+- repo_description: programs notes etc learned in bigdata
+  repo_full_name: jkabhishek/bigdata-learn
+  repo_languages:
+    HTML: 194
+    Java: 12940
+    PigLatin: 3168
+    Python: 17865
+  repo_readme: '# bigdata-learn
+
+    programs notes etc learned in bigdata
+
+
+
+
+    Indian topics [https://india.gov.in/topics]
+
+    agricultural data sets [https://data.gov.in/catalog/agriculture-production-stock-yield]
+
+
+    bangalore city datasets [http://openbangalore.org/]
+
+
+    Aadhaar Meta Data, Enrolment details is around 40GB [https://data.uidai.gov.in]
+
+    dis dataset [http://disnic.gov.in/dataset.htm]
+
+
+    Ministry of Statistics and Programme Implementation [http://mospi.nic.in/Mospi_New/site/home.aspx]
+
+
+    Office of the Registrar General & Census Commissioner, India [http://censusindia.gov.in/]
+
+
+    world bank [http://data.worldbank.org/country/india]
+
+
+    India - Quandl [https://www.quandl.com/collections/india]
+
+    how to use data.gov.in data sets [https://data.gov.in/help/how-use-datasets-apis]
+
+
+    data.gov.in [https://data.gov.in/catalogs]
+
+    '
+  repo_url: https://github.com/jkabhishek/bigdata-learn
+- repo_description: Abhishek jaiswal Blog
+  repo_full_name: jkabhishek/blog
+  repo_languages: {}
+  repo_readme: 'blog
+
+    ====
+
+
+    Abhishek jaiswal Blog
+
+    '
+  repo_url: https://github.com/jkabhishek/blog
+- repo_description: bootstrap basic design layouts
+  repo_full_name: jkabhishek/bootstrap-Bdesign
+  repo_languages:
+    CSS: 171580
+    JavaScript: 529611
+  repo_readme: 'bootstrap-Bdesign
+
+    =================
+
+
+    bootstrap basic design layouts
+
+    '
+  repo_url: https://github.com/jkabhishek/bootstrap-Bdesign
+- repo_description: ':python: Cloud Foundry sample app'
+  repo_full_name: jkabhishek/cf-sample-app-python
+  repo_languages:
+    Python: 459
+  repo_readme: '# cf-sample-app-python
+
+    :python: Cloud Foundry sample app
+
+
+    A sample [Flask](http://flask.pocoo.org/) application to deploy to Cloud Foundry
+    which works out of the box.
+
+
+    ## Run locally
+
+
+    1. clone the repo `git clone https://github.com/jkabhishek/cf-sample-app-python.git`
+
+    1. Install [Python](http://docs.python-guide.org/en/latest/starting/installation/)
+
+    1. Install Setuptools and pip (see guide above)
+
+    1. Install Virtualenv (acconplish this by running `pip install virtualenv`)
+
+    1. Run `virtualenv venv`
+
+    1. Run `source venv/bin/activate` on Mac OS X/Linux or`venv\Scripts\activate.bat`
+    on windows
+
+    1. Run `pip install -r requirements.txt`
+
+    1. Run `python app.py`
+
+    1. Visit [http://localhost:3000](http://localhost:3000)
+
+
+    ## Run in the cloud
+
+
+    1. Install the [cf CLI](https://github.com/cloudfoundry/cli#downloads)
+
+    1. clone the repo `git clone https://github.com/jkabhishek/cf-sample-app-python.git`
+
+    1. `cd cf-sample-app-python`
+
+    1. Run `cf push`
+
+    1. Visit the given URL'
+  repo_url: https://github.com/jkabhishek/cf-sample-app-python
+- repo_description: My cheatsheets
+  repo_full_name: jkabhishek/cheatsheets
+  repo_languages:
+    CSS: 1994
+    Perl: 2885
+  repo_readme: null
+  repo_url: https://github.com/jkabhishek/cheatsheets
+- repo_description: CloudFormation Security Scanner
+  repo_full_name: jkabhishek/cloudformation
+  repo_languages:
+    JavaScript: 51348
+  repo_readme: "[![CloudSploit](https://cloudsploit.com/img/logo-big-text-100.png\
+    \ \"CloudSploit\")](https://cloudsploit.com)\n\nCloudSploit CloudFormation Scanner\n\
+    =================\n\n## Background\nCloudSploit CloudFormation Scanner is a static\
+    \ analysis tool for finding security vulnerabilities in CloudFormation templates.\n\
+    \n## Installation\nEnsure that NodeJS is installed. If not, install it from [here](https://nodejs.org/download/).\n\
+    \n```\ngit clone git@github.com:cloudsploit/cloudformation.git\n```\n\n## Setup\n\
+    To begin using the scanner, edit the `index.js` file with the path to your CloudFormation\
+    \ JSON file. The CloudFormation Scanner only works on JSON, but you can easily\
+    \ convert your YAML templates using [CFN Flip](https://github.com/awslabs/aws-cfn-template-flip).\n\
+    \n## Adding Plugins\n\nPlugins are named for their resource, as defined in CloudFormation.\
+    \ You can easily add a new plugin by creating a file in `/plugins` with the name\
+    \ of the resource and `.js`. For example: `AutoScaling::AutoScalingGroup.js`.\n\
+    \nEach plugin must accept the following:\n\n1. `settings`: An object containing\
+    \ global settings for the scan (see `settings.json`)\n2. `resource`: The CloudFormation\
+    \ resource name from the template (ex: `MyAutoScalingGroup`)\n3. `cfObj`: The\
+    \ CloudFormation resource object containing the configuration settings\n4. `callback`:\
+    \ A function to call when completed processing\n\n```\nmodule.exports = function(settings,\
+    \ resource, cfObj, callback) {}\n```\n\nAfter processing the object, an array\
+    \ of results must be returned to the callback:\n\n```\nresults.push({\n\tstatus:\
+    \ 2,\n\tmessage: 'Autoscaling group is being launched in EC2 Classic. Only VPC\
+    \ should be used.',\n\tresource: resource\n});\n```\n\nThe `status` should be\
+    \ one of:\n\n* `0`: \"PASS\" - no security risk found\n* `1`: \"WARN\" - a potential\
+    \ security issue\n* `2`: \"FAIL\" - a severe security issue\n\nThe `message` should\
+    \ describe why the result was assigned and a short blurb about remediation.\n\n\
+    The `resource` should match the `resource` passed to the function."
+  repo_url: https://github.com/jkabhishek/cloudformation
+- repo_description: Project files for Intro to DevOps class
+  repo_full_name: jkabhishek/devops-intro-project
+  repo_languages:
+    Python: 958
+    Ruby: 2191
+    Shell: 8226
+  repo_readme: "Instructions for Practice Project\n========================================\n\
+    \nThese instructions assume familiarity with Git and GitHub. If you are not comfortable\
+    \ with those tools, please complete Udacity's [How to Use Git and GitHub](https://www.udacity.com/course/how-to-use-git-and-github--ud775)\
+    \ course before proceeding. \n\nAfter installing the required tools, you will\
+    \ need to ensure that your computer can find the executables to run them. For\
+    \ this, you might need to modify the PATH environment variable. A good overview\
+    \ is at [superuser.com](https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them).\
+    \ You may need to search the web for instructions on how to set the PATH variable\
+    \ for your specific operating system and version. \n\n## Setting up your local\
+    \ machine\n\n* Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)\n\
+    * Install [Vagrant](https://www.vagrantup.com/downloads.html)\n* Install [Packer](https://www.packer.io/downloads.html)\n\
+    * Fork this repo to your own account\n* Clone the forked repo to your local machine\
+    \ using this command: `git clone http://github.com/<account-name>/devops-intro-project\
+    \ devops`, replacing `<account-name>` with your GitHub username.\n\n## Part I:\
+    \ Building a box with Packer\n\nFrom the packer-templates directory on your local\
+    \ machine:\n\n* Run `packer build -only=virtualbox-iso application-server.json`.\
+    \ You may see various timeouts and errors, as shown below. If you do, retry the\
+    \ command until the ISO download succeeds:\n\n```\nread: operation timed out\n\
+    ==> virtualbox-iso: ISO download failed.\nBuild 'virtualbox-iso' errored: ISO\
+    \ download failed.\n\nchecksums didn't match expected\n==> virtualbox-iso: ISO\
+    \ download failed.\nBuild 'virtualbox-iso' errored: ISO download failed.\n\n==>\
+    \ Some builds didn't complete successfully and had errors:\n--> virtualbox-iso:\
+    \ ISO download failed.\n```\n\n* Run `cd virtualbox`\n* Run `vagrant box add ubuntu-14.04.4-server-amd64-appserver_virtualbox.box\
+    \ --name devops-appserver`\n* Run `vagrant up`\n* Run `vagrant ssh` to connect\
+    \ to the server\n\n\n## Part II: Cloning, developing, and running the web application\n\
+    \n* On your local machine go to the root directory of the cloned repository \n\
+    * Run `git clone https://github.com/chef/devops-kungfu.git devops-kungfu`\n* Open\
+    \ http://localhost:8080 from your local machine to see the app running.\n* In\
+    \ the VM, run `cd devops-kungfu`\n* To install app specific node packages, run\
+    \ `sudo npm install`. You may see several errors; they can be ignored for now.\n\
+    * Now you can run tests with the command `grunt -v`. The tests will run, then\
+    \ quit with an error. \n\n### Troubleshooting\n\nIf you encounter errors with\
+    \ Ubuntu version numbers not being available or checksum errors on Ubuntu,it means\
+    \ that this repository has not yet been updated for the latest Ubuntu version.\
+    \ Feel free to mention this in the [forum](https://discussions.udacity.com/c/nd012-p1-intro-to-devops/nd012-the-devops-environment).\
+    \ Meanwhile, you can fix this error for yourself by editing the contents of the\
+    \ `application-server.json` and `control-server.json` template files inside the\
+    \ `packer-templates` folder.\n\n* Find the newest version number and checksum\
+    \ from the [Ubuntu website for this release](http://releases.ubuntu.com/trusty/)\n\
+    * Edit `PACKER_BOX_NAME` and `iso_checksum` in the template files to match that\
+    \ version number and checksum.\n\n\n\n### Part IV: creating jenkins server \n\n\
+    * goto to packer-templates directory `cd packer-templates` \n* run `packer build\
+    \ -only=virtualbox-iso control-server.json`\n* to add to vagrant run `vagrant\
+    \ box add virtualbox/ubuntu-14.04.5-server-amd64-controlserver_virtualbox.box\
+    \ --name devops-ctrlserver`\n* go to vagrants/control-server/ folder `cd vagrants/control-server/`\n\
+    * run  `vagrant up`\n\n### Part V: jenkins on aws\n* export aws keys by command\
+    \ `export AWS_ACCESS_KEY_ID=<id> && export AWS_SECRET_ACCESS_KEY=<key>`\n* run\
+    \ `packer build -only=amazon-ebs control-server.json`\n* launch the ami on aws\n\
+    \n"
+  repo_url: https://github.com/jkabhishek/devops-intro-project
+- repo_description: null
+  repo_full_name: jkabhishek/devops-tutz
+  repo_languages:
+    Ruby: 583
+  repo_readme: "# devops-tutz\n# DevOps Learning Initiative #DevOpsInitiative\nThis\
+    \ project is a part of devops learning initiave to get all related project\nsearch\
+    \ #devOpsInitiative\n\n### Project List \n* [todobackend](https://github.com/abhishek-jaiswal/todobackend)\
+    \ python app the sample application repository, including the continuous delivery\
+    \ workflow\n* [acceptance-test](https://github.com/abhishek-jaiswal/acceptance-test)\
+    \ front end acceptance test Node.js test runner that runs acceptance tests against\
+    \ the todobackend sample application\n* [docker-ansible](https://github.com/abhishek-jaiswal/docker-ansible)\
+    \ Docker ansible image for agent service. Ansible playbook runner\n* [todobackend-base-image](https://github.com/abhishek-jaiswal/todobackend-base-image)\
+    \ Python base image Docker base image of the todobackend development and release\
+    \ images\n\n\n### Continious Delivery Workflow\n\n![continious delivery workflow](images/cdr.png\
+    \ \"Continious Delivery Workflow\")\n\n### 1. Test\n```sh\n  # to start with our\
+    \ test part of continuous workflow clone all repo above \n  git clone https://github.com/abhishek-jaiswal/docker-ansible.git\n\
+    \  git clone https://github.com/abhishek-jaiswal/acceptance-test.git\n  git clone\
+    \ https://github.com/abhishek-jaiswal/todobackend.git\n  git clone https://github.com/abhishek-jaiswal/todobackend-base-image.git\n\
+    \  \n  # Build the base image ,\n  pushd todobackend-base-image && docker build\
+    \ -t abhishekk/todobackend-base . && popd\n  \n  # build the Ansible image which\
+    \ will use as a discovery agent\n  pushd docker-ansible && docker build -t abhishekk/ansible\
+    \ . && popd\n  \n  # Build the Development Image\n  pushd todobackend/docker/dev/\
+    \ && docker-compose up agent && docker-compose up test && popd\n  \n```\n![Test\
+    \ Environment](images/test_env.png \"Test Environment Workflow\")\n\n\n\n\n\n\
+    ### 2. Build\n\nIn Build Section we do all the building part of our workflow\n\
+    ```sh\n# build the Acceptance test image \n  pushd acceptance-test && docker build\
+    \ -t abhishekk/acceptance-test . && popd\n  \n  # build the which create all release\
+    \ dependency in python wheels\n  docker-compose up builder\n  \n```\n\n![Build\
+    \ Environment](images/build_env.png \"Build Environment Workflow\")\n\nat this\
+    \ point we had build our application atrifacts and published to a local folder\
+    \ that can be consumed by the relased stage as described in below image\n\n![Publishing\
+    \ Artifacts](images/publishing_artifacts.png \"Publishing Artifacts\")\n\n###\
+    \ 3. Release\n```sh\n  pushd todobackend/docker/release/\n  \n  # clear any exiting\
+    \ build and clean the environment\n  docker-compose kill && docker-compose rm\
+    \ -f\n  \n  # Build The release environment\n  docker-compose up agent \n  docker-compose\
+    \ run --rm app manage.py collectstatic --noinput\n  docker-compose run --rm app\
+    \ manage.py migrate --noinput\n  docker-compose up test \n  popd\n  \n```\n![Release\
+    \ Environment](images/release_env.png \"Release Environment Workflow\")\n"
+  repo_url: https://github.com/jkabhishek/devops-tutz
+- repo_description: Integrated set of Django applications addressing authentication,
+    registration, account management as well as 3rd party (social) account authentication.
+  repo_full_name: jkabhishek/django-allauth
+  repo_languages:
+    Emacs Lisp: 104
+    HTML: 42111
+    JavaScript: 3260
+    Makefile: 396
+    Python: 655276
+  repo_readme: "==========================\nWelcome to django-allauth!\n==========================\n\
+    \n.. image:: https://badge.fury.io/py/django-allauth.png\n   :target: http://badge.fury.io/py/django-allauth\n\
+    \n.. image:: https://travis-ci.org/pennersr/django-allauth.png\n   :target: http://travis-ci.org/pennersr/django-allauth\n\
+    \n.. image:: https://img.shields.io/pypi/v/django-allauth.svg\n   :target: https://pypi.python.org/pypi/django-allauth\n\
+    \n.. image:: https://coveralls.io/repos/pennersr/django-allauth/badge.png?branch=master\n\
+    \   :alt: Coverage Status\n   :target: https://coveralls.io/r/pennersr/django-allauth\n\
+    \n.. image:: https://pennersr.github.io/img/bitcoin-badge.svg\n   :target: https://blockchain.info/address/1AJXuBMPHkaDCNX2rwAy34bGgs7hmrePEr\n\
+    \n.. image:: https://img.shields.io/badge/code%20style-pep8-green.svg\n   :target:\
+    \ https://www.python.org/dev/peps/pep-0008/\n\n.. image:: https://img.shields.io/badge/code_style-standard-brightgreen.svg\n\
+    \   :target: http://standardjs.com\n\nIntegrated set of Django applications addressing\
+    \ authentication,\nregistration, account management as well as 3rd party (social)\
+    \ account\nauthentication.\n\nHome page\n  http://www.intenct.nl/projects/django-allauth/\n\
+    \nSource code\n  http://github.com/pennersr/django-allauth\n\nMailinglist\n  http://groups.google.com/group/django-allauth\n\
+    \nDocumentation\n  https://django-allauth.readthedocs.io/en/latest/\n\nStack Overflow\n\
+    \  http://stackoverflow.com/questions/tagged/django-allauth\n\nRationale\n=========\n\
+    \nMost existing Django apps that address the problem of social\nauthentication\
+    \ focus on just that. You typically need to integrate\nanother app in order to\
+    \ support authentication via a local\naccount.\n\nThis approach separates the\
+    \ worlds of local and social\nauthentication. However, there are common scenarios\
+    \ to be dealt with\nin both worlds. For example, an e-mail address passed along\
+    \ by an\nOpenID provider is not guaranteed to be verified. So, before hooking\n\
+    an OpenID account up to a local account the e-mail address must be\nverified.\
+    \ So, e-mail verification needs to be present in both worlds.\n\nIntegrating both\
+    \ worlds is quite a tedious process. It is definitely\nnot a matter of simply\
+    \ adding one social authentication app, and one\nlocal account registration app\
+    \ to your ``INSTALLED_APPS`` list.\n\nThis is the reason this project got started\
+    \ -- to offer a fully\nintegrated authentication app that allows for both local\
+    \ and social\nauthentication, with flows that just work.\n\n\nCommercial Support\n\
+    ==================\n\nThis project is sponsored by IntenCT_. If you require assistance\
+    \ on\nyour project(s), please contact us: info@intenct.nl.\n\n.. _IntenCT: http://www.intenct.info\n\
+    \n\nCross-Selling\n=============\n\nIf you like this, you may also like:\n\n-\
+    \ django-trackstats: https://github.com/pennersr/django-trackstats\n- netwell:\
+    \ https://github.com/pennersr/netwell\n"
+  repo_url: https://github.com/jkabhishek/django-allauth
+- repo_description: Django rest mongo
+  repo_full_name: jkabhishek/django-mongo
+  repo_languages:
+    Python: 96698
+  repo_readme: '# django-mongo
+
+    Django rest mongo
+
+    '
+  repo_url: https://github.com/jkabhishek/django-mongo
+- repo_description: Intro to docker
+  repo_full_name: jkabhishek/docker-101
+  repo_languages:
+    CSS: 21345
+    HTML: 8896
+    JavaScript: 32390
+  repo_readme: '# docker-101
+
+    Intro to docker
+
+    [Slides for docker 101](https://jkabhishek.github.io/docker-101/)
+
+    '
+  repo_url: https://github.com/jkabhishek/docker-101
+- repo_description: docker image containing latest ansible
+  repo_full_name: jkabhishek/docker-ansible
+  repo_languages: {}
+  repo_readme: '# docker-ansible
+
+    docker image containing latest ansible
+
+
+    # DevOps Learning Initiative #DevOpsInitiative
+
+    This is abhishekk/ansible image which contains probe.yml as agent service
+
+
+    ![agent service ](images/agent.png "Agent Service Probe")
+
+    '
+  repo_url: https://github.com/jkabhishek/docker-ansible
+- repo_description: null
+  repo_full_name: jkabhishek/dockerbuild
+  repo_languages:
+    Python: 366
+  repo_readme: '# dockerbuild
+
+    '
+  repo_url: https://github.com/jkabhishek/dockerbuild
+- repo_description: A simple python programm that searches duplicate files.
+  repo_full_name: jkabhishek/duplicatefiles
+  repo_languages:
+    Python: 5252
+  repo_readme: 'The idea came when I tried to clean up my old backups. I was looking
+    for files
+
+    that I will still need and deleting duplicate backups. Since I used to
+
+    completely copy all my data to my backup drive every time I wanted to backup I
+
+    have a hell of a mess. I don''t want to lose any data. Especially not my
+
+    pictures. I hope this will speed up cleaning. The goal is to identify duplicates
+
+    in my backups and thusly reduce the data that I have to check manually.
+
+
+    Since the script now uses a database for its collected data instead of having
+
+    everything in memory it should work even with huge amounts of files.
+
+
+    Once the tests with my hard drives were successfull I will start to cleaning up
+
+    the code a bit.
+
+
+    License
+
+    -------
+
+
+    Copyright (c) 2011 Matthias Matousek <matou@taunusstein.net>
+
+
+    Permission to use, copy, modify, and distribute this software for any
+
+    purpose with or without fee is hereby granted, provided that the above
+
+    copyright notice and this permission notice appear in all copies.
+
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+
+    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+
+    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+
+    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+
+    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+
+    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+
+    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+    '
+  repo_url: https://github.com/jkabhishek/duplicatefiles
+- repo_description: A python script to find duplicates within a directory
+  repo_full_name: jkabhishek/duplicatefinder
+  repo_languages:
+    Python: 3426
+  repo_readme: null
+  repo_url: https://github.com/jkabhishek/duplicatefinder
+- repo_description: Advanced Browser and Streamer Python
+  repo_full_name: jkabhishek/effluxpy
+  repo_languages:
+    CSS: 19357
+    HTML: 80827
+    JavaScript: 2119
+    Makefile: 1578
+    Python: 200685
+  repo_readme: "effluxpy\n========\n\n|Travis-CI badge| |AppVeyor badge| |Build Status|\
+    \ |Codacy Badge|\n|License: MIT| |Version: 0.5.6| |Python 2.7+, 3.3+|\n\nThe Advanced\
+    \ Browser and Streamer Python.\n\nDocumentation\n~~~~~~~~~~~~~\n\nHead to http://jkabhishek.github.io/effluxpy/\
+    \ for an online version of\ncurrent *master* documentation,\n\nYou can also build\
+    \ yourself from sphinx sources using the documentation\n``Makefile`` located at\
+    \ ``docs`` directory.\n\nScreenshots\n~~~~~~~~~~~\n\n[|Screenshot of directory\
+    \ with enabled remove|\n\nFeatures\n~~~~~~~~\n\n-  **Simple**, like Python\u2019\
+    s SimpleHTTPServer or Apache\u2019s Directory\n   Listing.\n-  **Downloadable\
+    \ directories**, streaming directory tarballs on the\n   fly.\n-  **Optional remove**\
+    \ for files under given path.\n-  **Optional upload** for directories under given\
+    \ path.\n-  **Player** audio player plugin is provided (without transcoding).\n\
+    \nNew in 0.5\n~~~~~~~~~~\n\n-  File and plugin APIs have been fully reworked making\
+    \ them more\n   complete and extensible, so they can be considered stable now.\
+    \ As a\n   side-effect backward compatibility on some edge cases could be broken\n\
+    \   (please fill an issue if your code is affected).\n\n   -  Old widget API have\
+    \ been deprecated and warnings will be shown if\n      used.\n   -  Widget registration\
+    \ in a single call (passing a widget instances\n      is still available though),\
+    \ no more action-widget duality.\n   -  Callable-based widget filtering (no longer\
+    \ limited to mimetypes).\n   -  A raw HTML widget for maximum flexibility.\n\n\
+    -  Plugins can register command-line arguments now.\n-  Player plugin is now able\
+    \ to load ``m3u`` and ``pls`` playlists, and\n   optionally play everything on\
+    \ a directory (adding a command-line\n   argument).\n-  Browsing now takes full\
+    \ advantage of ``scandir`` (already in Python\n   3.5 and an external dependency\
+    \ for older versions) providing faster\n   directory listing.\n-  Custom file\
+    \ ordering while browsing directories.\n-  Easy multi-file uploads.\n-  Jinja2\
+    \ template output minification, saving those precious bytes.\n-  Setup script\
+    \ now registers a proper ``effluxpy`` command.\n\nInstall\n-------\n\nIt is on\
+    \ `pypi <https://pypi.python.org/pypi/effluxpy/>`__ .\n\n::\n\n    pip install\
+    \ effluxpy\n\nYou can get the development version from our `github\nrepository\
+    \ <https://github.com/jkabhishek/effluxpy>`__ .\n\n::\n\n       pip install git+https://github.com/jkabhishek/effluxpy.git\n\
+    \nUsage\n~~~~~\n\nServing $HOME/shared to all addresses\n\n::\n\n       effluxpy\
+    \ 0.0.0.0 8080 --directory $HOME/shared\n\nShowing help\n\n::\n\n       effluxpy\
+    \ --help\n\nShowing help including player plugin arguments\n\n::\n\n      effluxpy\
+    \ --plugin=player --help\n\nThis examples assume python\u2019s ``bin`` directory\
+    \ is in ``PATH``,\notherwise try replacing ``effluxpy`` with ``python -m effluxpy``.\n\
+    \nCommand-line arguments\n~~~~~~~~~~~~~~~~~~~~~~\n\nThis is what is printed when\
+    \ you run ``effluxpy --help``, keep in mind\nthat plugins (loaded with ``plugin``\
+    \ argument) could add extra arguments\nto this list.\n\n::\n\n      usage: effluxpy\
+    \ [-h] [--directory PATH] [--initial PATH] [--removable PATH]\n              \
+    \        [--upload PATH] [--exclude PATTERN] [--exclude-from PATH]\n         \
+    \             [--plugin MODULE]\n                      [host] [port]\n\n     \
+    \ positional arguments:\n        host                  address to listen (default:\
+    \ 127.0.0.1)\n        port                  port to listen (default: 8080)\n\n\
+    \      optional arguments:\n        -h, --help            show this help message\
+    \ and exit\n        --directory PATH      serving directory (default: current\
+    \ path)\n        --initial PATH        default directory (default: same as --directory)\n\
+    \        --removable PATH      base directory allowing remove (default: none)\n\
+    \        --upload PATH         base directory allowing upload (default: none)\n\
+    \        --exclude PATTERN     exclude paths by pattern (multiple)\n        --exclude-from\
+    \ PATH   exclude paths by pattern file (multiple)\n        --plugin MODULE   \
+    \    load plugin module (multiple)\n\nUsing as library\n~~~~~~~~~~~~~~~~\n\nIt\u2019\
+    s a python module, so you can import **effluxpy**, mount **app**, and\nserve it\
+    \ (it\u2019s ``WSGI``\\ \\_ compliant) using your preferred server.\n\neffluxpy\
+    \ is a Flask application, so it can be served along with any\n``WSGI``\\ \\_ app\
+    \ just setting **APPLICATION_ROOT** in **effluxpy.app**\nconfig to effluxpy prefix\
+    \ url, and mounting **effluxpy.app** on the\nappropriate parent *url-resolver*/*router*.\n\
+    \n`\\_WSGI <https://www.python.org/dev/peps/pep-0333/>`__\n\neffluxpy app config\
+    \ (available at :attr:``effluxpy.app.config``) uses\nthe following configuration\
+    \ options.\n\n-  **directory_base**: anything under this directory will be served,\n\
+    \   defaults to current path.\n-  **directory_start**: directory will be served\
+    \ when accessing root URL\n-  **directory_remove**: file removing will be available\
+    \ under this\n   path, defaults to **None**.\n-  **directory_upload**: file upload\
+    \ will be available under this path,\n   defaults to **None**.\n-  **directory_tar_buffsize**,\
+    \ directory tar streaming buffer size,\n   defaults to **262144** and must be\
+    \ multiple of 512.\n-  **directory_downloadable** whether enable directory download\
+    \ or not,\n   defaults to **True**.\n-  **use_binary_multiples** whether use binary\
+    \ units (bi-bytes, like\n   KiB) instead of common ones (bytes, like KB), defaults\
+    \ to **True**.\n-  **plugin_modules** list of module names (absolute or relative\
+    \ to\n   plugin_namespaces) will be loaded.\n-  **plugin_namespaces** prefixes\
+    \ for module names listed at\n   plugin_modules where relative plugin_modules\
+    \ are searched.\n-  **exclude_fnc** function will be used to exclude files from\
+    \ listing\n   and directory tarballs. Can be either None or function receiving\
+    \ an\n   absolute path and returning a boolean.\n\nAfter editing ``plugin_modules``\
+    \ value, plugin manager (available at\nmodule plugin_manager and app.extensions[\u2018\
+    plugin_manager\u2019]) should be\nreloaded using the ``reload`` method.\n\nThe\
+    \ other way of loading a plugin programmatically is calling plugin\nmanager\u2019\
+    s ``load_plugin`` method.\n\nExtend via plugin API\n~~~~~~~~~~~~~~~~~~~~~\n\n\
+    Starting from version 0.4.0, effluxpy is extensible via plugins. A\nfunctional\
+    \ \u2018player\u2019 plugin is provided as example, and some more are\nplanned.\n\
+    \nPlugins can add HTML content to effluxpy\u2019s browsing view, using some\n\
+    convenience abstraction for already used elements like external\nstylesheet and\
+    \ javascript tags, links, buttons and file upload.\n\nMore information at http://jkabhishek.github.io/effluxpy/plugins.html\n\
+    \n.. |Travis-CI badge| image:: http://img.shields.io/travis/jkabhishek/effluxpy/master.svg?style=flat-square\n\
+    \   :target: https://travis-ci.org/jkabhishek/effluxpy\n.. |AppVeyor badge| image::\
+    \ https://img.shields.io/appveyor/ci/jkabhishek/effluxpy/master.svg?style=flat-square\n\
+    \   :target: https://ci.appveyor.com/project/jkabhishek/effluxpy/branch/master\n\
+    .. |Build Status| image:: http://img.shields.io/coveralls/jkabhishek/effluxpy/master.svg?style=flat-square\n\
+    \   :target: https://coveralls.io/r/jkabhishek/effluxpy?branch=master\n.. |Codacy\
+    \ Badge| image:: https://api.codacy.com/project/badge/Grade/d5b4bc6a5ec34728ad14016ada414384\n\
+    \   :target: https://www.codacy.com/app/jkabhishek/effluxpy?utm_source=github.com&utm_medium=referral&utm_content=jkabhishek/effluxpy&utm_campaign=Badge_Grade\n\
+    .. |License: MIT| image:: http://img.shields.io/pypi/l/effluxpy.svg?style=flat-square\n\
+    \   :target: https://pypi.python.org/pypi/effluxpy/\n.. |Version: 0.5.6| image::\
+    \ http://img.shields.io/pypi/v/effluxpy.svg?style=flat-square\n   :target: https://pypi.python.org/pypi/effluxpy/\n\
+    .. |Python 2.7+, 3.3+| image:: https://img.shields.io/badge/python-2.7%2B%2C%203.3%2B-FFC100.svg?style=flat-square\n\
+    \   :target: https://pypi.python.org/pypi/effluxpy/\n.. |Screenshot of directory\
+    \ with enabled remove| image:: https://raw.githubusercontent.com/jkabhishek/effluxpy/master/docs/screenshot.0.3.1-0.png\n\
+    \n"
+  repo_url: https://github.com/jkabhishek/effluxpy
+- repo_description: ELK STACK in Docker with nginx as container for logs, includes
+    docker-compose
+  repo_full_name: jkabhishek/elk
+  repo_languages:
+    HTML: 614
+  repo_readme: "# elk\nELK STACK in Docker with nginx as container for logs, includes\
+    \ docker-compose\n\nIt uses \nElasticSearch \nKibana\nLogstash\nnginx \n\n`docker-compose\
+    \ up`\ngoto `http://localhost:5601` and create index and visualize the nginx logs"
+  repo_url: https://github.com/jkabhishek/elk
+- repo_description: personal emacs config
+  repo_full_name: jkabhishek/emacs-config
+  repo_languages:
+    Emacs Lisp: 2804
+    Vim script: 4251
+  repo_readme: "# emacs-config\npersonal emacs config\n\n\n**Quick Install:**\n\n\
+    \    git clone https://github.com/abhishek-jaiswal/emacs-config.git  ~/.emacs.d\n\
+    \n\n\n### Basic Customizing \n\n#### [Ido mode](https://www.emacswiki.org/emacs/InteractivelyDoThings)\n\
+    \n* To switch between buffers, press \u201CC-x b\u201D, then:\n\t- type some characters\
+    \ appearing in the buffer name, RET to visit the buffer in the front the list.\n\
+    \t- type some characters appearing in the buffer name, RET to visit the buffer\
+    \ in the front the list.\n\t- use C-s (next) or C-r (previous) (or LEFT and RIGHT)\
+    \ to move through the list.\n\t- [Tab] display possible completion in a buffer\
+    \ (or visit the buffer if there is only one possible completion).\n\t- use C-f\
+    \ to switch to find file (with ido-mode) or C-b to fall back to switch to buffer\
+    \ (without ido-mode).\n---\n\n\t\n\n    \n    \n    \n    \n\n\n\n**References:**\n\
+    \nhttp://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/\n\n\
+    http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/"
+  repo_url: https://github.com/jkabhishek/emacs-config
+- repo_description: A list of SaaS, PaaS and IaaS offerings that have free tiers of
+    interest to devops and infradev
+  repo_full_name: jkabhishek/free-for-dev
+  repo_languages: {}
+  repo_readme: "# free-for-dev\nDevelopers and Open Source authors now have a massive\
+    \ amount of services offering free tiers, but it can be hard to find them all\
+    \ in order to make informed decisions.\n\nThis is list of software (SaaS, PaaS,\
+    \ IaaS, etc.) and other offerings that have free tiers for developers.\n\nThe\
+    \ scope of this particular list is limited to things infrastructure developers\
+    \ (System Administrator, DevOps Practitioners, etc.) are likely to find useful.\
+    \ We love all the free services out there, but it would be good to keep it on\
+    \ topic.  It's a bit of a grey line at times so this is a bit opinionated; do\
+    \ not be offended if I do not accept your contribution.\n\nYou can help by sending\
+    \ Pull Requests to add more services. Once I have a good set of links in this\
+    \ README file, I'll look into a better layout for the information and links (help\
+    \ with that is appreciated too).\n\nIf you're not inclined to make PRs you can\
+    \ tweet me at ```@ripienaar```\n\nTable of Contents\n=================\n\n   *\
+    \ [Source Code Repos](#source-code-repos)\n   * [Tools for teams &amp; Collaboration](#tools-for-teams--collaboration)\n\
+    \   * [Code Quality](#code-quality)\n   * [Code Search and Browsing](#code-search-and-browsing)\n\
+    \   * [CI / CD](#ci--cd)\n   * [Security and PKI](#security-and-pki)\n   * [Management\
+    \ Systems](#management-systems)\n   * [Log Management](#log-management)\n   *\
+    \ [Analytics](#analytics)\n   * [Monitoring](#monitoring)\n   * [Crash / Exception\
+    \ handling](#crash--exception-handling)\n   * [Search](#search)\n   * [Email](#email)\n\
+    \   * [CDN and Protection](#cdn-and-protection)\n   * [PaaS](#paas)\n   * [BaaS](#baas)\n\
+    \   * [Web Hosting](#web-hosting)\n   * [IaaS](#iaas)\n   * [DBaaS](#dbaas)\n\
+    \   * [STUN, WebRTC, Web Socket Servers and other Routers](#stun-webrtc-web-socket-servers-and-other-routers)\n\
+    \   * [Issue tracking / Project management](#issue-tracking--project-management)\n\
+    \   * [Storage and Media Processing](#storage-and-media-processing)\n   * [Package\
+    \ Build Systems](#package-build-systems)\n   * [IDE and Code Editing](#ide-and-code-editing)\n\
+    \   * [Analytics, Events and  Statistics](#analytics-events-and--statistics)\n\
+    \   * [International Mobile number verification API and SDK](#international-mobile-number-verification-api-and-sdk)\n\
+    \   * [Payment / Billing Integration](#payment--billing-integration)\n   * [Other\
+    \ Packs](#other-packs)\n   * [Docker Related](#docker-related)\n     * [Alternate\
+    \ container hosting](#alternate-container-hosting)\n   * [Vagrant Related](#vagrant-related)\n\
+    \     * [Vagrant box indexes](#vagrant-box-indexes)\n   * [Data mining](#data-mining)\n\
+    \n## Source Code Repos\n\n  * https://bitbucket.org/ - Unlimited public and private\
+    \ git repos for small teams\n  * http://chiselapp.com/ - Unlimited public and\
+    \ private Fossil repositories\n  * https://github.com - Free for an unlimited\
+    \ number of public repositories\n  * https://about.gitlab.com/ - Unlimited public\
+    \ and private git repos with unlimited collaborators\n  * https://hub.jazz.net/\
+    \ - Unlimited public repos, private repos free for up to 3 accounts.\n  * https://visualstudio.com\
+    \ - Free unlimited private repos (Git and TFS) for up to 5 users per team\n\n\
+    ## Tools for teams & Collaboration\n\n  * http://appear.in/ - One click video\
+    \ conversations, for free\n  * http://www.hall.com/ - Free for unlimited users\
+    \ with some feature limitations\n  * https://www.flowdock.com/ - Chat and inbox,\
+    \ free for teams of 5 or less\n  * https://slack.com - Free for unlimited users\
+    \ with some feature limitations\n  * https://hipchat.com - Free for unlimited\
+    \ users with some feature limitations\n  * https://gitter.im - \"Chat, for GitHub\"\
+    . Unlimited public & private rooms, free for teams of up to 25\n  * http://www.google.com/hangouts/\
+    \ - One place for all your Conversations, for free (Need Google Account)\n  *\
+    \ https://kato.im - Team Chat & Collaboration, free for unlimited users with some\
+    \ feature limitations\n  * http://seafile.com/ - Private or cloud storage, file\
+    \ sharing, sync, discussions. Private version is full. Cloud version has just\
+    \ 1 GB.\n  * https://sameroom.io - Free for unlimited users with some feature\
+    \ limitations\n  * https://yammer.com/ - Private social network standalone or\
+    \ for M$ Office 365. Free, just a bit less admin tools and users management features.\n\
+    \  * https://www.blockspring.com/ - Share scripts with anyone on your team: cross\
+    \ language and with spreadsheet users. Free for 5 million runs a month.\n  * https://helpmonks.com/\
+    \ - Shared inbox for teams - Free for open source projects and non-profit organizations.\n\
+    \  * http://typetalk.in/ - Share and discuss ideas with your team through instant\
+    \ messaging on the web or on your mobile.\n\n## Code Quality\n\n  * http://tachikoma.io\
+    \ - Dependency Update for Ruby, Node.js, Perl projects - free for Open Source\n\
+    \  * https://landscape.io/ - Code Quality for Python projects, free for Open Source\n\
+    \  * https://codeclimate.com/ - Automated code review, free for Open Source\n\
+    \  * https://houndci.com/ - Comments on github commits about code quality - free\
+    \ for Open Source\n  * https://coveralls.io/ - Display test coverage reports -\
+    \ free for open source\n  * https://scrutinizer-ci.com/ - Continuous inspection\
+    \ platform - free for Open Source\n  * https://codecov.io/ - Code coverage tool\
+    \ (SaaS), free for 1 private project and no restrictions for publics repos\n \
+    \ * https://insight.sensiolabs.com/ - Code Quality for PHP/Symfony projects, free\
+    \ for Open Source\n  * https://www.codacy.com/ - Automated code reviews for PHP,\
+    \ Python, Javascript, Scala and CSS - free for open source\n\n## Code Search and\
+    \ Browsing\n  * https://sourcegraph.com/ - Java, Go, Python, Node.js, etc., code\
+    \ search/cross-references - free for open source\n  * https://searchcode.com/\
+    \ - comprehensive text-based code search - free for open source\n\n## CI / CD\n\
+    \n  * https://codeship.com/ - 100 private builds / month, 5 private projects.\
+    \  Unlimited for Open Source\n  * https://circleci.com - Free for one concurrent\
+    \ build\n  * https://travis-ci.org - Free for public Github repositories.\n  *\
+    \ http://wercker.com/ - Free for public and private repositories\n  * https://drone.io/\
+    \ - CI platform that includes browser testing, free for Open Source\n  * https://semaphoreci.com/\
+    \ - 100 private builds / month. Unlimited for Open Source.\n  * http://www.shippable.com/\
+    \ - Free for 1 build container, private and public repos, unlimited builds.\n\
+    \  * https://snap-ci.com - Free for public repositories, 1 build at the time\n\
+    \  * http://www.appveyor.com/ - CD service for Windows. Free for open-source projects.\n\
+    \  * [Comparison of Continuous Integration services](https://github.com/ligurio/Continuous-Integration-services)\n\
+    \  * https://saucelabs.com/ - CI with scalable testing for mobile and web apps,\
+    \ free for Open Source\n  * http://ftploy.com/ - 1 project w/ unlimited deployments\n\
+    \  * https://deployhq.com/ - 1 project w/ 10 daily deployments\n  * https://hub.jazz.net/\
+    \ - 60 minutes of free build time / month.\n  * https://styleci.io/ - Public GitHub\
+    \ repositories only.\n\n## Security and PKI\n\n  * http://vaddy.net - Continuous\
+    \ web security testing with continuous integration (CI) tools. 3 domains, 10 scan\
+    \ history for free\n  * https://www.globalsign.com/en/ssl/ssl-open-source/ - Free\
+    \ SSL certs for Open Source projects\n  * https://www.startssl.com/ - Free SSL\
+    \ certs\n  * https://stormpath.com/ - Free user management, authentication, social\
+    \ login, and SSO.\n  * https://auth0.com/ - Hosted free for development SSO\n\
+    \  * https://getclef.com/ - New take on auth unlimited free tier for anyone not\
+    \ using premium features\n  * https://ringcaptcha.com/ - Tools to use phone number\
+    \ as id, available for free\n  * https://www.ssllabs.com/ssltest/ - Very deep\
+    \ analysis of the configuration of any SSL web server\n  * https://qualys.com/forms/freescan/owasp/\
+    \ - Find web app vulnerabilities, audit for OWASP Risks\n  * [alienvault.com ThreatFinder](https://www.alienvault.com/open-threat-exchange/threatfinder)\
+    \ - Uncovers compromised systems in your network\n  * https://duosecurity.com\
+    \ - Two-factor authentication (2FA) for website or app. Free 10 users, all authentication\
+    \ methods, unlimited, integrations, hardware tokens.\n\n## Management Systems\n\
+    \n  * https://opbeat.com/ - Release, deploy, monitor.  Free for 3 users\n  * https://bitnami.com/\
+    \ - Deploy prepared apps on IaaS. Management of 1 AWS micro instance free\n\n\
+    ## Log Management\n\n  * https://papertrailapp.com/ - 48 hours search, 7 day archive,\
+    \ 100MB/month\n  * https://logentries.com/ - Free up to 5GB/month with 7 day retention\n\
+    \  * https://www.loggly.com/ - Free for a single user, see the ```lite``` option\n\
+    \  * http://sematext.com/logsene - Free for 1M logs, unlimited retention\n  *\
+    \ https://sumologic.com - Free up to 500MB/day, 7 day retention\n\n## Analytics\n\
+    \n  * http://www.splunk.com/en_us/products/splunk-cloud.html - Upload 5GB of data\
+    \ per day up to 28GB of total data stored\n  * https://parse.com - Unlimited free\
+    \ analytics\n\n## Monitoring\n\n  * http://www.appneta.com - Free with 1 hour\
+    \ data retention\n  * https://www.thousandeyes.com  - Network & user experience\
+    \ monitoring. 3 locations, plus 20 data feeds of major web services free.\n  *\
+    \ https://www.datadoghq.com/ - Free for up to 5 nodes\n  * http://www.stackdriver.com/\
+    \ - Free for up to 10 nodes/services\n  * https://keymetrics.io/ - Free for 2\
+    \ servers with 7 days data retention\n  * http://newrelic.com/ - Free with 24\
+    \ hour data retention\n  * https://nodequery.com/ - Free basic server monitor\
+    \ up to 10 servers\n  * https://www.pingdom.com/free/ - 1 site free\n  * https://www.opsgenie.com/\
+    \ - Alert management with mobile push. 600 free alerts for 2 users a month\n \
+    \ * https://www.runscope.com/ - Monitor and log API usage.  Single user 10,000\
+    \ request/month free\n  * http://www.circonus.com/ - Free for 20 metrics\n  *\
+    \ https://uptimerobot.com/ - Website monitoring, 50 monitors free\n  * https://www.statuscake.com/\
+    \ - Website monitoring, unlimited tests free with limitations\n  * http://www.boundary.com/\
+    \ - Free 1 second resolution for up to 10 servers\n  * https://ghostinspector.com/\
+    \ - Free website and web application monitoring. Single user, 100 test runs per\
+    \ month\n  * http://java-monitor.com/ - Free monitoring of JVM's and uptime\n\
+    \  * http://sematext.com/spm - Free for 24h metrics, unlimited number of servers,\
+    \ 10 custom metrics, 500K custom metrics data points, unlimited dashboards, users,\
+    \ etc.\n  * https://sealion.com/ - Free up to 2 servers, 3 days data retention,\
+    \ graphs and raw command output history (`top`, `ps`, `ifconfig`, `netstat`, `iostat`,\
+    \ `free`, custom, etc.)\n  * https://www.stathat.com - Get started with ten stats\
+    \ for free, no expiration.\n  * https://www.skylight.io - Free for first 100k\
+    \ requests\n  * https://www.appdynamics.com - Free for 24h metrics, application\
+    \ performance management agents limited to one Java, one .NET, one PHP, and one\
+    \ Node.js\n\n## Crash / Exception handling\n\n  * https://rollbar.com/ - Exception\
+    \ and error monitoring, free plan - 5000 errors/month, unlimited users, 30 days\
+    \ retention.\n  * https://bugsnag.com/ - Free for up to 2000 errors a month after\
+    \ the initial trial\n  * https://airbrake.io/ - Free for 1 project, 1 user, 2\
+    \ errors per minute, 2 day retention\n  * http://getsentry.com/ - Sentry tracks\
+    \ app exceptions in realtime, has a small free plan. Free, unrestricted use if\
+    \ self-hosted.\n\n## Search\n\n  * https://www.algolia.com - Hosted search-as-you-type\
+    \ (instant). Free hacker plan up to 1,000 documents and 50,000 operations. Bigger\
+    \ free plans available for community/open source projects.\n  * https://swiftype.com\
+    \ - hosted search solution (API and crawler). Free for a single search engine\
+    \ with up to 1000 documents. Free upgrade to Premium level for open-source projects.\n\
+    \  * https://bonsai.io - Free 1GB memory and 1GB storage.\n  * http://www.searchly.com\
+    \ - Free 2 Indices and 5MB storage.\n\n## Email\n\n  * http://www.sparkpost.com/\
+    \ - First 10,000 emails per month are free\n  * http://www.mailgun.com/ - First\
+    \ 10,000 emails per month are free\n  * http://mailchimp.com/ - 2,000 subscribers\
+    \ and 12,000 emails per month are free\n  * https://sendloop.com/ - 2,000 subscribers\
+    \ and 10,000 email delivery every month is free\n  * http://sendgrid.com/ - 400\
+    \ emails per day for free/25,000 free transactional emails per month for emails\
+    \ sent from a Google compute instance\n  * http://mandrill.com/ - First 12,000\
+    \ emails per month are free\n  * https://www.phplist.com/ - Hosted version allow\
+    \ 300 mails per month for free\n  * https://www.mailjet.com/ - 6000 mails per\
+    \ month for free\n  * https://www.sendinblue.com/ - 9000 mails per month for free\n\
+    \  * https://mailtrap.io - fake SMTP server for development, free plan with 1\
+    \ inbox, 50 messages, no team members, 2 emails/sec, no forward rules\n  * https://mailstache.io\
+    \ - 4 Mailboxes @ 1GB each for up to 2 custom domains.\n  * https://postmarkapp.com\
+    \ - First 25,000 emails are free\n  * https://www.zoho.com/mail/ - Free Email\
+    \ management and collaboration for upto 10 users.\n  * http://moosend.com/ \u2014\
+    \ Mailing list management service. Free account for 6 months for startups.\n\n\
+    ## CDN and Protection\n\n  * http://www.cloudflare.com/ - Basic service is free,\
+    \ good for a blog\n  * http://www.bootstrapcdn.com/ - CDN for bootstrap, bootswatch\
+    \ and font awesome\n  * https://surge.sh - Zero-bullshit, single\u2013command,\
+    \ bring your own source control web publishing CDN.\n  * https://cdnjs.com/ -\
+    \ CDN for JavaScript libraries, CSS libraries, SWF, images, etc!\n  * http://www.jsdelivr.com/\
+    \ - A free super-fast CDN for developers and webmasters\n  * https://developers.google.com/speed/libraries/\
+    \ - The Google Hosted Libraries is a content distribution network for the most\
+    \ popular, open-source JavaScript libraries.\n  * https://www.asp.net/ajax/cdn\
+    \ - The Microsoft Ajax Content Delivery Network (CDN) hosts popular third party\
+    \ JavaScript libraries such as jQuery and enables you to easily add them to your\
+    \ Web application\n  * https://toranproxy.com/ - Proxy for Packagist and GitHub.\
+    \ Never fail CD. Free for personal use, 1 developer, no support.\n\n## PaaS\n\n\
+    \  * https://cloud.google.com/appengine/ - Google App Engine gives 28 instance\
+    \ hours free, 1Gb NoSQL Database and more.\n  * https://www.engineyard.com - Engine\
+    \ Yard provides 500 free hours\n  * http://azure.microsoft.com/ - MS Azure gives\
+    \ $200 worth of free usage for a trial\n  * http://hpcloud.com/ - $300 credit\
+    \ over 90 days.\n  * https://appharbor.com/ - A .Net PaaS that provides 1 free\
+    \ worker\n  * https://www.heroku.com/ - Host your apps in the cloud, free for\
+    \ single process apps\n  * https://www.firebase.com/ - Build realtime apps, free\
+    \ plan has 50 Max Connections, 5 GB Data Transfer, 100 MB Data Storage.\n1 GB\
+    \ Hosting Storage and 100 GB Hosting Transfer.\n  * https://bluemix.net/ - IBM\
+    \ PaaS with a monthly free allowance\n  * https://www.openshift.com/ - RedHat\
+    \ OpenShift offers 3 free hosted apps\n  * https://scalingo.com - Free Tier, up\
+    \ to 3 apps, 1 container each, combined with data store addons free tier\n  *\
+    \ https://algorithmia.com - Host algorithms for free - includes 10,000 credits\
+    \ (seconds of on-demand execution time) free\n  * https://bigml.com/ - Hosted\
+    \ machine learning algorithms. Unlimited free tasks for development, limit of\
+    \ 16MB data per task\n  * https://www.activestate.com/stackato/ - Enterprise-hardened\
+    \ Cloud Foundry PaaS from ActiveState, for private, public and hybrid cloud, free\
+    \ up to 20GB\n  * http://www.outsystems.com/ - Enterprise web development PaaS\
+    \ for on-premise or cloud, free \"personal environment\" offering allows for unlimited\
+    \ code and up to 1GB database.\n  * https://platform.telerik.com/ - Build and\
+    \ deploy mobile applications using Javascript. Free plan has 100 MB Data Storage,\
+    \ 1GB File storage, 5GB Bandwidth, 1 million push notifications for BaaS offering,\
+    \ 100 active devices for analytics.\n\n## BaaS\n  * https://www.parse.com - Mobile\
+    \ backends, free plan has 30 requests per second, with 20 GB of file and database\
+    \ storage, as well as push notifications for up to 1,000,000 unique recipients.\n\
+    \  * http://appacitive.com/ - Mobile backend, free for the first 3 months with\
+    \ 100k API calls,Push notifications.\n  * https://www.contentful.com - Content\
+    \ as a Service. Content Management & Delivery APIs in the cloud. 3 users, 3 spaces\
+    \ (repositories) and 1,000,000 API requests per month for free.\n  * http://konacloud.io\
+    \ Web and Mobile Backend as a Service, with 5 GB free account.\n  * https://www.blockspring.com/\
+    \ - Cloud functions. Free for 5 million runs a month.\n\n## Web Hosting\n\n  *\
+    \ https://www.simplybuilt.com - SimplyBuilt offers free website building and hosting\
+    \ for open source projects (http://www.simplybuilt.com/explore/free-websites-for-open-source-projects).\
+    \ Simple alternative to GitHub Pages.\n  * http://www.devport.co - Turn GitHub\
+    \ projects, Apps, and websites into a personal developer portfolio.\n  * https://www.netlify.com\
+    \ - Builds, deploy and hosts static site or app, free for 100 MB data and 1 GB\
+    \ bandwith.\n\n## IaaS\n\n  * http://aws.amazon.com/free/ - AWS Free Tier - Free\
+    \ for 12 months\n  * https://exoscale.ch/ - Free resources for Open Source projects\n\
+    \  * https://developer.rackspace.com/ - Rackspace Cloud gives $50/month for 12\
+    \ months\n  * https://cloud.google.com/compute/ - Google Compute Engine gives\
+    \ $300 over 60 days\n  * https://cloud.google.com/container-engine/ - Google Container\
+    \ Engine for run Docker containers(Alpha). Pricing: same of Google Compute Engine.\n\
+    \  * https://nsone.net/ - Data Driven DNS, automatic traffic management, 1M free\
+    \ Queries\n\n## DBaaS\n   * https://mongolab.com/ - MongoDB as a service (500mb\
+    \ free)\n   * https://cloudant.com/ - Hosted database from IBM, free if usage\
+    \ is below $50/month\n   * https://realm.io - Free to use even for commercial\
+    \ projects, under Apache 2.0 License\n   * https://orchestrate.io/ - 1 application\
+    \ free\n   * https://redislabs.com/redis-cloud - Redis as a Service (25 mb free)\n\
+    \   * https://www.backand.com/ - Back-end as a service (for AngularJS)\n   * http://www.zenginehq.com\
+    \ - Build business workflow apps in minutes - free for single users\n   * https://parsehub.com/\
+    \ \u2014 Extract data from dynamic sites, turn dynamic websites into APIs, 5 projects\
+    \ free.\n   * https://import.io/ - Easily turn websites into APIs, completely\
+    \ free for life.\n   * https://redsmin.com/ - Online real-time monitoring and\
+    \ administration service for Redis, 1 Redis instance free\n   * http://graphstory.com/\
+    \ - GraphStory offers Neo4j (a Graph Database) as a service\n\n## STUN, WebRTC,\
+    \ Web Socket Servers and other Routers\n   * https://pusher.com. Hosted Web Sockets\
+    \ broker. Free for up to 20 simultaneous connections and 100k messages a day.\n\
+    \   * stun:stun.l.google.com:19302 - Google STUN\n   * stun:global.stun.twilio.com:3478?transport=udp\
+    \ - Twilio STUN\n   * https://www.segment.com. Hub to translate and route events\
+    \ to other third party services. 100k events a month free.\n   * https://ngrok.com/\
+    \ - expose locally running servers over a tunnel to a public URL\n\n## Issue tracking\
+    \ / Project management\n   * https://www.pivotaltracker.com/community/public-projects\
+    \ - Pivotal Tracker. Free for public projects.\n   * https://www.atlassian.com/opensource/overview\
+    \ - Free Jira etc for Open Source projects\n   * https://kanbanflow.com/ - Board\
+    \ based project management. Free (premium version with more options).\n   * https://kanbanpad.com/\
+    \ - Board based project management. Free (premium version with more options).\n\
+    \   * https://kanbanery.com/ - Board based project management. Free for 2 users\
+    \ (premium tiers with more options).\n   * https://zenhub.io/ - The only project\
+    \ management solution inside GitHub. Free for public repos, OSS, and non-profits.\n\
+    \   * https://trello.com/ - Board based project management. Free\n   * https://waffle.io/\
+    \ - Board based project management solution from your existing GitHub Issues.\
+    \ Free for open-source.\n   * https://huboard.com/ - Instant project management\
+    \ for your GitHub issues. Free for open-source.\n   * https://taiga.io/ - Project\
+    \ management platform for startups and agile developers. Free for open-source.\n\
+    \   * https://www.jetbrains.com/youtrack/buy/open_source_incloud.jsp - Free hosted\
+    \ YouTrack (InCloud) for FOSS projects (private projects free for 10 users: https://www.jetbrains.com/youtrack/buy/)\n\
+    \   * https://github.com - In addition to its git storage facility, github offers\
+    \ basic issue tracking\n   * https://asana.com - Free for private project with\
+    \ collaborators.\n   * http://www.acunote.com/ - Free project management and SCRUM\
+    \ software for up to 5 team members.\n   * http://gliffy.com/ - Online diagrams:\
+    \ flowchart, UML, wireframe... Also Plugins for Jira & Confluence. 5 diagrams\
+    \ and 2 MB free.\n   * https://cacoo.com/ - Online diagrams in real time: flowchart,\
+    \ UML, network. Free max. 15 users/diagram, 25 sheets.\n   * https://www.draw.io/\
+    \ - Online diagrams stored locally, in Google Drive, OneDrive or Dropbox. Free\
+    \ for all features and storage levels.\n   * https://hub.jazz.net/ - IBM Bluemix's\
+    \ project management services. Free for public projects, free for up to 3 users\
+    \ for private projects.\n   * http://leankit.com/ - Kanban board, that visualizes\
+    \ your workflow. Free up to 10 users.\n   * https://www.visualstudio.com/products/what-is-visual-studio-online-vs\
+    \ - Unlimited free private code repositories; Tracks bugs, work items, feedback\
+    \ and more.\n\n## Storage and Media Processing\n\n   * https://www.aerofs.com/\
+    \ - P2P file syncing, free for up to 30 users\n   * http://cloudinary.com - Image\
+    \ upload, powerful manipulations, storage, and delivery for sites and apps, with\
+    \ libraries for Ruby, Python, Java, PHP, Objective-C and more. Perpetual free\
+    \ tier includes 7500 images/month, 2gb storage, 5gb bandwidth.\n   * https://plot.ly\
+    \ - graph and share your data. Free tier includes unlimited public files and 10\
+    \ private files.\n   * https://transloadit.com - Handles file uploads & encoding\
+    \ of video, audio, images, documents. Free for open source & other do-gooders.\
+    \ Commercial applications get the first GB free for testdriving.\n   * https://cartodb.com\
+    \ - create maps and geospatial APIs from your data and public data\n   * https://shrinkray.io\
+    \ - free image optimization of Github repos\n\n## Package Build Systems\n\n  \
+    \ * https://build.opensuse.org/ - package build service for multiple distros (SUSE,\
+    \ EL, Fedora, Debian etc.)\n   * https://copr.fedoraproject.org/ - mock-based\
+    \ RPM build service for Fedora and EL\n   * https://help.launchpad.net/Packaging\
+    \ - Ubuntu and Debian build service\n\n## IDE and Code Editing\n\n   * https://c9.io\
+    \ - IDE in a browser. Incorporates an Ubuntu virtual machine and in-browser terminal\
+    \ access. Integrates with github and bitbucket, but also adds SFTP and generic\
+    \ Git access.\n   * https://koding.com - IDE in a browser. Features: Full sudo\
+    \ access - VMs hosted on Amazon EC2 - SSH Access - Real EC2 VM, no LXCs/hypervising\
+    \ - Custom sub-domains - Publicly accessible IP - Ubuntu 14.04 - IDE/Terminal/Collaboration\n\
+    \   * https://www.nitrous.io - Private Linux instance(s) with interactive collaboration\
+    \ {[More Details](http://goo.gl/J1Zbsg)}\n   * http://visualstudio.com/free -\
+    \ Fully-featured IDE with thousands of extensions, cross-platform app development\
+    \ (Microsoft extensions available for download for iOS and Android), desktop,\
+    \ web and cloud development, multi-language support (C#, C++, JavaScript, Python,\
+    \ PHP and more).\n   * https://cloud.sagemath.com - Collaborative mathematics-oriented\
+    \ IDE in a browser, with support for Python, LaTeX, IPython Notebooks, etc.\n\
+    \   * https://wakatime.com - quantified self metrics about your coding activity,\
+    \ using text editor plugins - Limited plan for free.\n   * https://codenvy.com/\
+    \ - IDE in a browser, collaborative, git integration, build and run your app in\
+    \ customizable Docker-based runners (free 512Mb RAM to distribute between you\
+    \ runners), pre-integrated deploy to Google Apps.\n   * https://apiary.io/ - Collaborative\
+    \ design API with instant API mock and generated documentation (Free for unlimited\
+    \ API blueprints and unlimited user with one admin account and hosted documentation)\n\
+    \   * https://www.jetbrains.com/products.html - Productivity tools, IDEs and deploy\
+    \ tools. Free license for students, teachers, open source projects, and user groups.\n\
+    \   * https://readme.io/ - Beautiful documentations made easy - free for Open\
+    \ Source\n   * https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx\
+    \ - Visual Studio. Not only for Windows and .NET\n   * https://codio.com/ - Codio\
+    \ is a cloud-based computer programming platform for universities, schools, and\
+    \ developer professionals.\n\n## Analytics, Events and  Statistics\n\n * https://www.librato.com/\
+    \ - Event/Data collection service with analysis and graphs. Limited plan for free.\n\
+    \ * https://google.com/analytics/ - Google Analytics\n * https://heapanalytics.com/\
+    \ - Automatically captures every user action in iOS or web apps. Free for up to\
+    \ 5,000 visits per month.\n * http://sematext.com/search-analytics - Free for\
+    \ up to 50K actions/month, 1 day data retention, unlimited dashboards, users,\
+    \ etc.\n * https://usabilityhub.com - Test designs and mockups on real people,\
+    \ track visitors. Free for one user, unlimited tests.\n * https://gosquared.com\
+    \ - Track up to 1,000 data points for free.\n\n\n## International Mobile number\
+    \ verification API and SDK\n * https://www.cognalys.com - Freemium mobile number\
+    \ verification through an innovative and relaible  method than using SMS gateway.\
+    \ Free accounts will have 70 Tries and 50 verifications per day .  {[Signup](https://www.cognalys.com/signup/1)}\n\
+    \n## Payment / Billing Integration\n\n * https://www.braintreepayments.com - Credit\
+    \ Card, Paypal, Venmo, Bitcoin, Apple Pay (, ...) integration. Single and Recurrent\
+    \ Payments. First $ 50.000 are free of charge.\n\n## Other Packs\n\n * https://education.github.com/pack\
+    \ - As long as you're a student at a recognized university\n\n## Docker Related\n\
+    ### Alternate container hosting\n\n  * https://quay.io/ - Unlimited free public\
+    \ containers\n\n## Vagrant Related\n### Vagrant box indexes\n\n  * https://atlas.hashicorp.com/boxes/search\
+    \ - HashiCorp's index of boxes\n  * http://vagrantbox.es - An alternative public\
+    \ box index\n\n## Data mining\n  * http://www.monkeylearn.com/ - Text mining in\
+    \ the cloud, 1,000 queries for free per month.\n"
+  repo_url: https://github.com/jkabhishek/free-for-dev
+- repo_description: CloudSploit Freshsales integration
+  repo_full_name: jkabhishek/freshsales
+  repo_languages:
+    JavaScript: 4532
+  repo_readme: '# freshsales
+
+    CloudSploit Freshsales integration
+
+    '
+  repo_url: https://github.com/jkabhishek/freshsales
+- repo_description: ':memo: freshsales-api'
+  repo_full_name: jkabhishek/freshsales-api
+  repo_languages:
+    JavaScript: 6771
+    Python: 9322
+  repo_readme: "# freshsales-api\n:memo: freshsales-api\n\n\n### clone the repo\n\
+    ``` git clone https://github.com/jkabhishek/freshsales-api.git ```\n### install\
+    \ the python dependencies\n```\nsudo pip install -r requirements.txt\n```\n\n\
+    ### copy the settings template and update reuired values\n``` cp settings.py.sample\
+    \ settings.py ```\n\n```python\n# your fresh sales url with api appended \nBASE_URI\
+    \ = \"https://testfrshslscrm.freshsales.io/api/\"\n\n# your api key\napi_key =\
+    \ \"<your-api-key>\"\n```\n\n### Run the command for help\n``` python csfs.py\
+    \ --help ```\n\n### commands example\n``` \n# list all leads\npython csfs.py listlead\n\
+    \n# list all contacts\npython csfs.py listcontacts\n\n# update lead\npython csfs.py\
+    \ addlead --email test3@gmail.com\n\n# create notes\npython csfs.py addnote --email\
+    \ test3@gmail.com --note \"new node added \\n update1\"\n```\n"
+  repo_url: https://github.com/jkabhishek/freshsales-api
+- repo_description: GDG Bangalore Website
+  repo_full_name: jkabhishek/gdgbangalore.github.io
+  repo_languages:
+    CSS: 108092
+    JavaScript: 47180
+    Shell: 3682
+  repo_readme: "# GDG Bangalore - Project Zeppelin\n\n### About \nThis is the official\
+    \ Google Developer Group Bangalore Website.\n\nTemplate is brought by [GDG Lviv](http://lviv.gdg.org.ua/)\
+    \ team.\nCheckout the [full documentation](https://github.com/gdg-x/zeppelin/wiki).\n\
+    \n### Who is using template?\nGoing to use template? Drop in a mail at [*lviv@gdg.org.ua*](mailto:lviv@gdg.org.ua)\
+    \ so they can include you to this list, or make a pull request.\n\n* [GDG DevFest\
+    \ Ukraine 2014](http://devfest.gdg.org.ua/)\n* [GDG DevFest Istanbul 2014](http://devfesttr.com/)\n\
+    * [GDG DevFest Omsk 2014](http://gdg-devfest-omsk.org/)\n* [GDG Bangalore Site](http://gdgbangalore.github.io/)\n\
+    * [2014 \u5357\u9633 GDG Devfest \u5927\u4F1A](http://devfest.gdgny.org)\n* [DevFest\
+    \ Nordeste 2014](http://devfestnordeste.github.io/devfest-2014/)\n* [GDG DevFest\
+    \ The Netherlands](http://www.devfest.nl/)\n* [DevFest Centro-Oeste 2014](http://www.devfestcentrooeste.com.br/)\n\
+    * [DevFest SP 2014](http://sp.devfest.com.br/)\n* [Android DevFest Space Coast](http://gdg-space-coast.github.io/zeppelin/)\n\
+    \n### Contributors\n* Design and markup: [Oleh Zasadnyy](https://github.com/ozasadnyy)\n\
+    * Idea and Jekyll integration: [Vitaliy Zasadnyy](https://github.com/zasadnyy)\n\
+    \n### Licence\nProject is published under the [MIT licence](https://github.com/gdg-x/zeppelin/blob/master/LICENSE.txt).\
+    \ Feel free to clone and modify repo as you want, but don't forget to add reference\
+    \ to authors :)\n\n\n"
+  repo_url: https://github.com/jkabhishek/gdgbangalore.github.io
+- repo_description: 'A robot powered training repository :robot:'
+  repo_full_name: jkabhishek/github-slideshow
+  repo_languages:
+    CSS: 86147
+    HTML: 111963
+    Ruby: 5859
+    Shell: 2193
+  repo_readme: '# Your GitHub Learning Lab Repository for Introducing GitHub
+
+
+    Welcome to **your** repository for your GitHub Learning Lab course. This repository
+    will be used during the different activities that I will be guiding you through.
+
+
+    Oh! I haven''t introduced myself...
+
+
+    I''m the GitHub Learning Lab bot and I''m here to help guide you in your journey
+    to learn and master the various topics covered in this course. I will be using
+    Issue and Pull Request comments to communicate with you. In fact, I already added
+    an issue for you to check out.
+
+
+    ![issue tab](https://lab.github.com/public/images/issue_tab.png)
+
+
+    I''ll meet you over there, can''t wait to get started!
+
+    '
+  repo_url: https://github.com/jkabhishek/github-slideshow
+- repo_description: 'Big data analytics with python '
+  repo_full_name: jkabhishek/hadoop-essential
+  repo_languages: {}
+  repo_readme: "hadoop-essential\n================\n\nBig data analytics with python\
+    \ \n"
+  repo_url: https://github.com/jkabhishek/hadoop-essential
+- repo_description: encrypter
+  repo_full_name: jkabhishek/icrypt
+  repo_languages:
+    Python: 4391
+  repo_readme: '# icrypt
+
+    icrypt
+
+    '
+  repo_url: https://github.com/jkabhishek/icrypt
+- repo_description: null
+  repo_full_name: jkabhishek/jkabhishek.github.io
+  repo_languages:
+    CSS: 3929
+    HTML: 8306
+    JavaScript: 3757
+  repo_readme: '# jkabhishek.github.io
+
+    :rocket: :airplane: :rainbow: :house: [jkabhishek.github.io](https://jkabhishek.github.io).'
+  repo_url: https://github.com/jkabhishek/jkabhishek.github.io
+- repo_description: docker to kube tutorial
+  repo_full_name: jkabhishek/k8s_tutz
+  repo_languages:
+    Python: 367
+    Shell: 38
+  repo_readme: "# k8s_tutz\n``` docker to kube tutorial ```\n\n# download docker images\n\
+    docker pull redis\n``` docker pull python:2.7 ```\n\n\n\n# Build the containers\n\
+    \n``` sh dbuild.sh ```\n\n# if you want to run through docker run\n``` docker-compose\
+    \ up ```\n\n# to delete run\n``` docker-compose down ```\n\n# to create k8s deployment\
+    \ run\n``` kubectl create -f kubernetes_yamls/redis-dep.yaml ```\n``` kubectl\
+    \ create -f kubernetes_yamls/web-dep.yaml ```\n\n# to access web port\n``` kubectl\
+    \ describe svc web | grep NodePort ```\n\nfor more info checkout \nhttps://github.com/wardviaene/kubernetes-course\n"
+  repo_url: https://github.com/jkabhishek/k8s_tutz
+- repo_description: kubernetes-example
+  repo_full_name: jkabhishek/kubernetes-example
+  repo_languages: {}
+  repo_readme: '# kubernetes-example
+
+
+
+    This repository contains kubernetes example code , which is intended to learning
+    purpose
+
+
+    ## Contents
+
+    | #  | Topic | description |
+
+    | --- | --- | --- |
+
+    | 1 | [Pods](pod.md) | Basic pod  |
+
+    |2 | [ServidePods](pod.md#nginx-service)| Pod with service exposed outside |
+
+    |3| | |
+
+    '
+  repo_url: https://github.com/jkabhishek/kubernetes-example
+- repo_description: desc
+  repo_full_name: jkabhishek/laravel-accounting
+  repo_languages:
+    CSS: 154217
+    JavaScript: 493794
+    PHP: 74195
+  repo_readme: '## Laravel PHP Framework
+
+
+    [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework)
+    [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework)
+    [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
+
+
+    Laravel is a web application framework with expressive, elegant syntax. We believe
+    development must be an enjoyable, creative experience to be truly fulfilling.
+    Laravel attempts to take the pain out of development by easing common tasks used
+    in the majority of web projects, such as authentication, routing, sessions, and
+    caching.
+
+
+    Laravel aims to make the development process a pleasing one for the developer
+    without sacrificing application functionality. Happy developers make the best
+    code. To this end, we''ve attempted to combine the very best of what we have seen
+    in other web frameworks, including frameworks implemented in other languages,
+    such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+
+
+    Laravel is accessible, yet powerful, providing powerful tools needed for large,
+    robust applications. A superb inversion of control container, expressive migration
+    system, and tightly integrated unit testing support give you the tools you need
+    to build any application with which you are tasked.
+
+
+    ## Official Documentation
+
+
+    Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+
+
+    ### Contributing To Laravel
+
+
+    **All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework)
+    repository.**
+
+
+    ### License
+
+
+    The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+    '
+  repo_url: https://github.com/jkabhishek/laravel-accounting
+- repo_description: collection of latex templates and resume
+  repo_full_name: jkabhishek/latex
+  repo_languages:
+    Shell: 152
+    TeX: 48588
+  repo_readme: '# Latex Resume Builder
+
+    collection of latex templates and resume
+
+
+    # Templates
+
+    [![N|Solid](https://raw.githubusercontent.com/jkabhishek/latex/master/images/awesome.png)](https://github.com/jkabhishek/latex)
+
+
+    # Instruction
+
+    It Requires Docker to run
+
+    Download Docker image
+
+    `Docker pull abhishekk/latex`
+
+
+    Clone the repo
+
+    ` git clone https://github.com/jkabhishek/latex.git`
+
+
+    go to awesome_cv folder
+
+    `cd latex/awesome_cv`
+
+
+    Generate aresume from awesome template
+
+    `../run_latex_cmd.sh lualatex resume.tex`
+
+
+    '
+  repo_url: https://github.com/jkabhishek/latex
+- repo_description: learn go by example
+  repo_full_name: jkabhishek/learngo
+  repo_languages:
+    Go: 7858
+    Python: 2232
+  repo_readme: "## Learn Go By Example\n[https://jkabhishek.github.io/learngo/](https://jkabhishek.github.io/learngo/)\n\
+    ### contents\n\n[1. Hello World](001-hello_world.md)\n\nYou can use the [editor\
+    \ on GitHub](https://github.com/abhishek-jaiswal/learngo/edit/master/README.md)\
+    \ to maintain and preview the content for your website in Markdown files.\n\n\
+    Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/)\
+    \ to rebuild the pages in your site, from the content in your Markdown files.\n\
+    \n### What is GOLANG ?\n\nA open source Programming language Developed by `Google`.\n\
+    Concurrent, garbage-collected, builds fast at scale\n\nGo is designed specifically\
+    \ as a systems programming language for large, distributed systems and highly-scalable\
+    \ network servers. In that vein, it replaces C++ and Java in Google's software\
+    \ stack\n\n\n### Features of GOLANG:\n\n- The go language is very concise, simple\
+    \ and safe.\n\n- It\u2019s compilation time is very fast.\n\n- It supports the\
+    \ patterns which adapt to the surrounding environment similar to dynamic languages.\n\
+    \n- It supports inbuilt concurrency such as lightweight processes channels and\
+    \ select statements.\n\n- It supports the interfaces and the embedded types.\n\
+    \n- It doesn\u2019t require any external dependencies for the production of the\
+    \ statically linked native binaries.\n\n\n\nMarkdown is a lightweight and easy-to-use\
+    \ syntax for styling your writing. It includes conventions for\n\n```markdown\n\
+    Syntax highlighted code block\n\n# Header 1\n## Header 2\n### Header 3\n\n- Bulleted\n\
+    - List\n\n1. Numbered\n2. List\n\n**Bold** and _Italic_ and `Code` text\n\n[Link](url)\
+    \ and ![Image](src)\n```\n\n### Jekyll Themes\n\nYour Pages site will use the\
+    \ layout and styles from the Jekyll theme you have selected in your [repository\
+    \ settings](https://github.com/abhishek-jaiswal/learngo/settings). The name of\
+    \ this theme is saved in the Jekyll `_config.yml` configuration file.\n\n### Support\
+    \ or Contact\n\nHaving trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/)\
+    \ or [contact support](https://github.com/contact) and we\u2019ll help you sort\
+    \ it out.\n"
+  repo_url: https://github.com/jkabhishek/learngo
+- repo_description: null
+  repo_full_name: jkabhishek/machine-learning-bootcamp
+  repo_languages:
+    HTML: 6312735
+    Jupyter Notebook: 62166738
+  repo_readme: '# Python-Data-Science-and-Machine-Learning-Bootcamp
+
+    Repo for Python Data Science and Machine Learning Bootcamp
+
+    '
+  repo_url: https://github.com/jkabhishek/machine-learning-bootcamp
+- repo_description: django-rest-token-based-app
+  repo_full_name: jkabhishek/myapp
+  repo_languages:
+    CSS: 13265
+    HTML: 17255
+    JavaScript: 12684
+    Python: 9174
+  repo_readme: '# myapp
+
+    django-rest-token-based-app
+
+    '
+  repo_url: https://github.com/jkabhishek/myapp
+- repo_description: Odoo (formerly OpenERP). Open Source Business Apps.
+  repo_full_name: jkabhishek/odoo
+  repo_languages:
+    CSS: 1609900
+    JavaScript: 6168186
+    PHP: 14259
+    Python: 10502393
+    Ruby: 220
+    Shell: 14194
+    XSLT: 65133
+  repo_readme: "[![Build Status](http://runbot.odoo.com/runbot/badge/default/1/8.0.svg)](http://runbot.odoo.com/runbot)\n\
+    \nOdoo\n----\n\nOdoo is a suite of web based open source business apps.\n\nIt's\
+    \ main apps include an <a href=\"https://www.odoo.com/page/crm\">Open Source CRM</a>,\
+    \ <a href=\"https://www.odoo.com/page/website-builder\">Website Builder</a>, <a\
+    \ href=\"https://www.odoo.com/page/e-commerce\">eCommerce</a>, <a href=\"https://www.odoo.com/page/project-management\"\
+    >Project Management</a>, <a href=\"https://www.odoo.com/page/accounting\">Billing\
+    \ & Accounting</a>, <a href=\"https://www.odoo.com/page/point-of-sale\">Point\
+    \ of Sale</a>, <a href=\"https://www.odoo.com/page/employees\">Human Resources</a>,\
+    \ Marketing, Manufacturing, Purchase Management, ...  Each application is standalone\
+    \ but you get a full featured <a href=\"https://www.odoo.com\">Open Source ERP</a>\
+    \ if you install several apps as they integrate to each others.\n\n\nGetting started\
+    \ with Odoo development\n--------------------------------------\n\nIf you are\
+    \ a developer type the following command at your terminal:\n\n    wget -O- https://raw.githubusercontent.com/odoo/odoo/master/odoo.py\
+    \ | python\n\nThen follow <a href=\"https://doc.openerp.com/trunk/server/howto/howto_website/\"\
+    >the developer tutorial</a>\n\n\n\nPackages, tarballs and installers\n---------------------------------\n\
+    \n* Debian packages\n\n    Add this apt repository to your /etc/apt/sources.list\
+    \ file\n\n        deb http://nightly.openerp.com/8.0/nightly/deb/ ./\n\n    Then\
+    \ type:\n\n        $ sudo apt-get update\n        $ sudo apt-get install odoo\n\
+    \n* <a href=\"http://nightly.openerp.com/\">Source tarballs</a>\n\n* <a href=\"\
+    http://nightly.openerp.com/\">Windows installer</a>\n\n* <a href=\"http://nightly.openerp.com/\"\
+    >RPM package</a>\n\n\nFor Odoo employees\n------------------\n\nTo add the odoo-dev\
+    \ remote use this command:\n\n    $ ./odoo.py setup_git_dev\n\nTo fetch odoo merge\
+    \ pull requests refs use this command:\n\n    $ ./odoo.py setup_git_review\n\n"
+  repo_url: https://github.com/jkabhishek/odoo
+- repo_description: Templates for Odoo in PyCharm
+  repo_full_name: jkabhishek/odoo-pycharm-templates
+  repo_languages: {}
+  repo_readme: '# Odoo PyCharm Templates
+
+    ### Templates for Odoo in PyCharm
+
+
+    This Templates can help you to develop Odoo Modules Faster and with no Typing
+    Errors
+
+
+    ### Configuration:
+
+    If You are using a linux distribution you can save the XML file in PyCharm files,
+    Just find the path:
+
+    ~/.PyCharm*/config/templates
+
+    and save the XML file there, Then Enjoy your time developing a great Odoo Modules
+    :)
+
+    '
+  repo_url: https://github.com/jkabhishek/odoo-pycharm-templates
+- repo_description: null
+  repo_full_name: jkabhishek/openerp-ramport-scripts
+  repo_languages:
+    PHP: 23974
+  repo_readme: 'openerp-ramport-scripts
+
+    =======================
+
+    '
+  repo_url: https://github.com/jkabhishek/openerp-ramport-scripts
+- repo_description: packer-example
+  repo_full_name: jkabhishek/packer-example
+  repo_languages: {}
+  repo_readme: '# packer-example
+
+    packer-example
+
+    '
+  repo_url: https://github.com/jkabhishek/packer-example
+- repo_description: Backbone.js php mysql with twitter bootstrap
+  repo_full_name: jkabhishek/php-backbone-app
+  repo_languages:
+    JavaScript: 118294
+    PHP: 3934
+  repo_readme: 'php-backbone-app
+
+    ================
+
+
+    #Backbone.js php mysql with twitter bootstrap
+
+
+    Simple backbone.js application with php and mysql .
+
+
+    ## Getting Started
+
+
+    Download the code and import the sql file , change database configuration from
+
+    * `server/config.php`
+
+    ```php
+
+    $connection = mysql_connect(''localhost'', ''root'', ''mindfire'');
+
+    ```
+
+    * assets/js/appjs
+
+    code
+
+    ```js
+
+    var address = ''http://localhost/php-backbone-app/server/'';
+
+    ```
+
+
+
+    and enjoy
+
+    Thanks :-)
+
+    '
+  repo_url: https://github.com/jkabhishek/php-backbone-app
+- repo_description: php openerp lib openerplib openerp php library for openerp
+  repo_full_name: jkabhishek/php-openerp-lib
+  repo_languages:
+    PHP: 23953
+    Shell: 56
+  repo_readme: "# openerplib, openerp-lib, openerp library for php, php openerp lib,\
+    \ openerp-php-lib\n\nopenerp php library used xml-rpc , and openerp ORM\n\nopenerplib\
+    \ is a library for PHP that allows operations with xml-rpc [OpenERP] (http://www.openerp.com/)\
+    \ comfortably.\n\nInspired from Openerp Client Liprary python\n\n## Requeriments\n\
+    \nDependency (requirement)\n\n* xmlrpc.inc >= 1.174 http://phpxmlrpc.sourceforge.net/\
+    \ (incluida)\n\n## Installation\n\nIt requires no special installation. Copy the\
+    \ / openerplib where being want to use and import to your php scri\n\n## Configuration\n\
+    \nTwo forms of use.\n\n### Configuring file / openerplib / openerplib.inc.php\n\
+    \n```php\n<?php\n\tdefine('_OPENERPLIB_BD_', '');\n\tdefine('_OPENERPLIB_UID_',\
+    \ 0);\n\tdefine('_OPENERPLIB_PASSWD_', '');\n\tdefine('_OPENERPLIB_URL_', 'http://openerp/xmlrpc');\n\
+    ?>\n```\n\n### On-live setting.\n\n```php\n<?php\n\t$config = array(\n\t\t'bd'\
+    \        => 'mybdname',\n\t\t'uid'       => 1212,\n\t\t'passwd'    => 'foo',\n\
+    \t\t'url'       => 'http://openerp/xmlrpc',\n\t);\n\t\n\t$open = new OpenERP($config);\n\
+    ?>\n```\n\n## Usage\n\n### Creating the factory object OpenERP\n\n```php\n<?php\n\
+    \t$open = new OpenERP();\t// read config => openerlib.inc.php\n?>\n```\n\n###\
+    \ Reading objects by object id.\n\n```php\n<?php\n\t// Read res.partner object\
+    \ with id 1 (only reads the 'id' property)\n\t$p = $open->res_partner->get(1);\n\
+    \tprint $p->id;\n\n\t//  Read res.partner object with id 1 and some of its properties\n\
+    \t$p = $open->res_partner('name', 'active')->get(1);\n\tprint $p->id;\n\tprint\
+    \ $p->name . \" \". $p->active;\n\t\n\t$p = $open->res_partner(array('name', 'active'))->get(1);\n\
+    \tprint $p->id;\n\tprint $p->name . \" \". $p->active;\n\t\n\t// Read res.partner\
+    \ object with id 1, all properties\n\t$p = $open->res_partner('__ALL')->get(1);\n\
+    \tprint $p->id;\n\tprint $p->name . \" \". $p->ref . \" \" . $p->vat;\n?>\n```\n\
+    \    \n### Navigating many2one objects with OpenERP\n\t\n```php\n<?php\n\t$p =\
+    \ $open->res_partner('country')->get(1);\n\tprint $p->id;\n\tprint $p->country->id;\t\
+    // many2one => res.country\n\tprint $p->country('name')->name;\n?>\n```\n\t\n\
+    ### Navigating one2many objects with OpenERP\n\n```php\n<?php\n\t$p = $open->res_partner('departament_ids')->get(1);\n\
+    \tprint \"Departaments of \" . $p->id; \n\tforeach($p->departament_ids('name',\
+    \ 'address_id') as $d)\t// res.partner.departament\n\t\tprint $d->name . \" \"\
+    \ . $d->address_id->id;\n?>\n```\n\t\n### searches\n\n```php\n<?php\n\t$fields\
+    \ = array('street', 'email');\n\t$results = $open->res_partner_address($fields)->search('email',\
+    \ '=', 'foo@bar.com');\n\tforeach ($results as $id => $address) {\n\t\tprint \"\
+    <h1>\" . $id . \"</h1>\";\n\t\tprint \"<pre>\" . $address->info() . \"</pre>\"\
+    ;\n\t\tprint \"<hr>\";\n\t}\n?>\n```\n\n### Navigation , editing and saving (Update\
+    \ record)\n\n```php\n<?php\n\t$p = $open->res_partner('name', 'active')->get(1);\n\
+    \t$p->name = 'FOO';\n\t$p->save();\n?>\n```\n\n### Creating new record\n\n```php\n\
+    <?php\n\t$crm = $open->crm_case;\n\t$crm->name = 'TEST';\n\t$crm->section_id =\
+    \ 10;\n\t$crm->email_from = 'foo@bar.com';\n\t$id = $crm->save();\n\tprint $id\
+    \ ? \"<h1>OK: \".$id.\"</h1>\" : \"<h1>ERROR</h1><pre>\". $crm->getError() . \"\
+    </pre>\";\n?>\n```\n\n\n### run Methods\n\n```php\n<?php\n\t$crm = $open->crm_case->get(39806);\n\
+    \t$r = $crm->workflow('case_open');\n\tprint \"<pre>\". print_r($r) . \"</pre>\"\
+    ;\n?>\n```\n\n## Contact\nAbhishek <ia.malhotra@gmail.com>\n"
+  repo_url: https://github.com/jkabhishek/php-openerp-lib
+- repo_description: ':sparkles: :sparkles: :sparkles: some pyspark python wrapper
+    example :sparkles: :sparkles: :sparkles:'
+  repo_full_name: jkabhishek/pyspark-example
+  repo_languages:
+    Python: 2100
+    Shell: 874
+  repo_readme: "# pyspark-example\n:sparkles: :sparkles: :sparkles: some pyspark python\
+    \ wrapper example :sparkles: :sparkles: :sparkles:\n\n\nResources\nPyspark Documentation\n\
+    - http://spark.apache.org/docs/latest/api/python/index.html\n\nMovie rating datasets\n\
+    - https://grouplens.org/datasets/movielens/\n\nsql functions and calls\n- https://www.analyticsvidhya.com/blog/2016/10/spark-dataframe-and-operations/\n\
+    \n\nSteps to download data\n======================\n\n```\n# download datasets\
+    \ and unzip\n$ ./setup.sh -d\n$ ./setup.sh -u\n$ ./setup.sh -r\n```\n\nview rating\
+    \ histograms\n====\n\nit will read ml-20m/ratings.csv which has \n\n\n| UserID\
+    \ | MovieID | ratings | UnixTimestamps |\n| ------ | ------- | ------- | --------------\
+    \ |\n| 138493 | 60816   | 4.5     | 1259865163     |\n\n\n\n```\n$ python generate_ratings_histogram.py\n\
+    \n#load data into sqlitedb\npython import_csv.py\n\n# run sql spark\n$ python\
+    \ spark_sql.py\n```\n\n\n\n"
+  repo_url: https://github.com/jkabhishek/pyspark-example
+- repo_description: Courseara python programming assignments
+  repo_full_name: jkabhishek/python-coursera-projects
+  repo_languages:
+    Python: 11410
+  repo_readme: 'python-coursera-projects
+
+    ========================
+
+
+    Courseara python programming assignments
+
+    '
+  repo_url: https://github.com/jkabhishek/python-coursera-projects
+- repo_description: Simple voice to speech transcription using Google
+  repo_full_name: jkabhishek/python-google-transcribe
+  repo_languages: {}
+  repo_readme: 'This simple python file will take the name of a FLAC encoded file
+    at 16000Hz, upload it to Google''s Speech API servers and print the return transcription.
+
+
+    This uses the API built into chrome, and thus there''s no way of knowing when
+    it will stop working. It does work as of November 2013.
+
+
+    It is released to the Public Domain.
+
+    '
+  repo_url: https://github.com/jkabhishek/python-google-transcribe
+- repo_description: Python Objects Oriented Concepts Explained with Examples
+  repo_full_name: jkabhishek/python-oops
+  repo_languages:
+    Python: 13020
+  repo_readme: '# python-oops
+
+    Python Objects Oriented Concepts Explained with Examples
+
+
+    * [Encapsulation](/encapsulation.md)
+
+    * [Method Overloading](/method_overloading.md)
+
+    * [inheritance](/inheritance.md)
+
+    * [Multiple inheritance (MRO)](/multiple_inheritance.md)'
+  repo_url: https://github.com/jkabhishek/python-oops
+- repo_description: A collection of design patterns/idioms in Python
+  repo_full_name: jkabhishek/python-patterns
+  repo_languages:
+    Python: 138023
+    Shell: 717
+  repo_readme: 'python-patterns
+
+    ===============
+
+
+    A collection of design patterns and idioms in Python.
+
+
+    When an implementation is added or modified, be sure to update this file and
+
+    rerun `append_output.sh` (eg. ./append_output.sh borg.py) to keep the output
+
+    comments at the bottom up to date.
+
+
+    Current Patterns:
+
+
+    __Creational Patterns__:
+
+
+    | Pattern | Description |
+
+    |:-------:| ----------- |
+
+    | [abstract_factory](creational/abstract_factory.py) | use a generic function
+    with specific factories |
+
+    | [borg](creational/borg.py) | a singleton with shared-state among instances |
+
+    | [builder](creational/builder.py) | instead of using multiple constructors, builder
+    object receives parameters and returns constructed objects |
+
+    | [factory_method](creational/factory_method.py) | delegate a specialized function/method
+    to create instances |
+
+    | [lazy_evaluation](creational/lazy_evaluation.py) | lazily-evaluated property
+    pattern in Python |
+
+    | [pool](creational/pool.py) | preinstantiate and maintain a group of instances
+    of the same type |
+
+    | [prototype](creational/prototype.py) | use a factory and clones of a prototype
+    for new instances (if instantiation is expensive) |
+
+
+    __Structural Patterns__:
+
+
+    | Pattern | Description |
+
+    |:-------:| ----------- |
+
+    | [3-tier](structural/3-tier.py) | data<->business logic<->presentation separation
+    (strict relationships) |
+
+    | [adapter](structural/adapter.py) | adapt one interface to another using a white-list
+    |
+
+    | [bridge](structural/bridge.py) | a client-provider middleman to soften interface
+    changes |
+
+    | [composite](structural/composite.py) | encapsulate and provide access to a number
+    of different objects |
+
+    | [decorator](structural/decorator.py) | wrap functionality with other functionality
+    in order to affect outputs |
+
+    | [facade](structural/facade.py) | use one class as an API to a number of others
+    |
+
+    | [flyweight](structural/flyweight.py) | transparently reuse existing instances
+    of objects with similar/identical state |
+
+    | [front_controller](structural/front_controller.py) | single handler requests
+    coming to the application |
+
+    | [mvc](structural/mvc.py) | model<->view<->controller (non-strict relationships)
+    |
+
+    | [proxy](structural/proxy.py) | an object funnels operations to something else
+    |
+
+
+    __Behavioral Patterns__:
+
+
+    | Pattern | Description |
+
+    |:-------:| ----------- |
+
+    | [chain](behavioral/chain.py) | apply a chain of successive handlers to try and
+    process the data |
+
+    | [catalog](behavioral/catalog.py) | general methods will call different specialized
+    methods based on construction parameter |
+
+    | [chaining_method](behavioral/chaining_method.py) | continue callback next object
+    method |
+
+    | [command](behavioral/command.py) | bundle a command and arguments to call later
+    |
+
+    | [iterator](behavioral/iterator.py) | traverse a container and access the container''s
+    elements |
+
+    | [mediator](behavioral/mediator.py) | an object that knows how to connect other
+    objects and act as a proxy |
+
+    | [memento](behavioral/memento.py) | generate an opaque token that can be used
+    to go back to a previous state |
+
+    | [observer](behavioral/observer.py) | provide a callback for notification of
+    events/changes to data |
+
+    | [publish_subscribe](behavioral/publish_subscribe.py) | a source syndicates events/data
+    to 0+ registered listeners |
+
+    | [registry](behavioral/registry.py) | keep track of all subclasses of a given
+    class |
+
+    | [specification](behavioral/specification.py) |  business rules can be recombined
+    by chaining the business rules together using boolean logic |
+
+    | [state](behavioral/state.py) | logic is organized into a discrete number of
+    potential states and the next state that can be transitioned to |
+
+    | [strategy](behavioral/strategy.py) | selectable operations over the same data
+    |
+
+    | [template](behavioral/template.py) | an object imposes a structure but takes
+    pluggable components |
+
+    | [visitor](behavioral/visitor.py) | invoke a callback for all items of a collection
+    |
+
+
+    __Design for Testability Patterns__:
+
+
+    | Pattern | Description |
+
+    |:-------:| ----------- |
+
+    | [setter_injection](dft/setter_injection.py) | the client provides the depended-on
+    object to the SUT via the setter injection (implementation variant of dependency
+    injection) |
+
+
+    __Fundamental Patterns__:
+
+
+    | Pattern | Description |
+
+    |:-------:| ----------- |
+
+    | [delegation_pattern](fundamental/delegation_pattern.py) | an object handles
+    a request by delegating to a second object (the delegate) |
+
+
+    __Others__:
+
+
+    | Pattern | Description |
+
+    |:-------:| ----------- |
+
+    | [blackboard](other/blackboard.py) | architectural model, assemble different
+    sub-system knowledge to build a solution, AI approach - non gang of four pattern
+    |
+
+    | [graph_search](other/graph_search.py) | graphing algorithms - non gang of four
+    pattern |
+
+    | [hsm](other/hsm/hsm.py) | hierarchical state machine - non gang of four pattern
+    |
+
+    '
+  repo_url: https://github.com/jkabhishek/python-patterns
+- repo_description: Python Basics and installation
+  repo_full_name: jkabhishek/python-presentation
+  repo_languages:
+    CSS: 63583
+    JavaScript: 45413
+    Python: 1807
+    Ruby: 867
+    Shell: 364
+  repo_readme: "<style>\n@import \"http://fonts.googleapis.com/css?family=Open Sans:regular,semibold,italic,italicsemibold|Inconsolata&amp;v2\"\
+    ;\nbody {\n  font-family: \"Open Sans\";\n  margin: 6em 2em 2em 2em;\n}\nbody:before\
+    \ {\n  content: '';\n  position: fixed;\n  top: 2%;\n  right: 3%;\n  height: 100px;\n\
+    \  width: 100px;\n  background: url(http://www.html5rocks.com/static/images/identity/HTML5_Badge_128.png)\
+    \ no-repeat 50% 50%;\n  background-size: contain;\n  z-index: 10;\n  opacity:\
+    \ 0.1;\n}\nh1, h2, h3, h4 {\n  font-weight: 600;\n}\nh1 {\n  position: fixed;\n\
+    \  background: -webkit-linear-gradient(top, white 65%, rgba(255,255,255,0));\n\
+    \  background: -moz-linear-gradient(top, white 65%, rgba(255,255,255,0));\n  background:\
+    \ -ms-linear-gradient(top, white 65%, rgba(255,255,255,0));\n  background: -o-linear-gradient(top,\
+    \ white 65%, rgba(255,255,255,0));\n  width: 100%;\n  height: 80px;\n  padding:\
+    \ 10px 10px 10px 1em;\n  left: 0;\n  top: 0;\n  margin: 0;\n}\nh1 img {\n  height:\
+    \ 30px;\n  vertical-align: middle;\n  margin-bottom: 8px;\n}\na { color: navy;\
+    \ }\npre {\n  background: #eee;\n  margin-left: 2em;\n  padding: 5px;\n  border-left:\
+    \ 3px solid #ccc;\n}\n</style>\n\n<h1><img src=\"images/io2012_logo.png\"> HTML5\
+    \ Slide Template</h1>\n\n## Configuring the slides\n\nMuch of the deck is customized\
+    \ by changing the settings in [`slide_config.js`](slide_config.js).\nSome of the\
+    \ customizations include the title, Analytics tracking ID, speaker\ninformation\
+    \ (name, social urls, blog), web fonts to load, themes, and other\ngeneral behavior.\n\
+    \n### Customizing the `#io12` hash\n\nThe bottom of the slides include `#io12`\
+    \ by default. If you'd like to change\nthis, please update the variable `$social-tags:\
+    \ '#io12';` in\n[`/theme/scss/default.scss`](theme/scss/default.scss).\n\nSee\
+    \ the next section on \"Editing CSS\" before you go editing things.\n\n## Editing\
+    \ CSS\n\n[Compass](http://compass-style.org/install/) is a CSS preprocessor used\
+    \ to compile\nSCSS/SASS into CSS. We chose SCSS for the new slide deck for maintainability,\n\
+    easier browser compatibility, and because...it's the future!\n\nThat said, if\
+    \ not comfortable working with SCSS or don't want to learn something\nnew, not\
+    \ a problem. The generated .css files can already be found in\n(see [`/theme/css`](theme/css)).\
+    \ You can just edit those and bypass SCSS altogether.\nHowever, our recommendation\
+    \ is to use Compass. It's super easy to install and use.\n\n### Installing Compass\
+    \ and making changes\n\nFirst, install compass:\n\n    sudo gem update --system\n\
+    \    sudo gem install compass\n\nNext, you'll want to watch for changes to the\
+    \ exiting .scss files in [`/theme/scss`](theme/scss)\nand any new one you add:\n\
+    \n    $ cd io-2012-slides\n    $ compass watch\n\nThis command automatically recompiles\
+    \ the .scss file when you make a change.\nIts corresponding .css file is output\
+    \ to [`/theme/css`](theme/css). Slick.\n\nBy default, [`config.rb`](config.rb)\
+    \ in the main project folder outputs minified\n.css. It's a best practice after\
+    \ all! However, if you want unminified files,\nrun watch with the style output\
+    \ flag:\n\n    compass watch -s expanded\n\n*Note:* You should not need to edit\
+    \ [`_base.scss`](theme/scss/_base.scss).\n\n## Running the slides\n\nThe slides\
+    \ can be run locally from `file://` making development easy :)\n\n### Running\
+    \ from a web server\n\nIf at some point you should need a web server, use [`serve.sh`](serve.sh).\
+    \ It will\nlaunch a simple one and point your default browser to [`http://localhost:8000/template.html`](http://localhost:8000/template.html):\n\
+    \n    $ cd io-2012-slides\n    $ ./serve.sh\n\nYou can also specify a custom port:\n\
+    \n    $ ./serve.sh 8080\n\n### Presenter mode\n\nThe slides contain a presenter\
+    \ mode feature (beta) to view + control the slides\nfrom a popup window.\n\nTo\
+    \ enable presenter mode, add `presentme=true` to the URL: [http://localhost:8000/template.html?presentme=true](http://localhost:8000/template.html?presentme=true)\n\
+    \nTo disable presenter mode, hit [http://localhost:8000/template.html?presentme=false](http://localhost:8000/template.html?presentme=false)\n\
+    \nPresenter mode is sticky, so refreshing the page will persist your settings.\n\
+    \n---\n\nThat's all she wrote!\n"
+  repo_url: https://github.com/jkabhishek/python-presentation
+- repo_description: null
+  repo_full_name: jkabhishek/record
+  repo_languages:
+    Python: 19709
+  repo_readme: 'record
+
+    ======
+
+    '
+  repo_url: https://github.com/jkabhishek/record
+- repo_description: Test responsive layout, powered by AngularJS and Bootstrap 3
+  repo_full_name: jkabhishek/responsivetest
+  repo_languages: {}
+  repo_readme: '# Responsive Test
+
+
+    This tool is used to test responsive layout.
+
+    You can see the live demo on http://responsivetest.net
+
+
+    The tool is powered by [jQuery](http://jquery.com), [Bootstrap 3](http://getbootstrap.com),
+    and [AngularJS](http://angularjs.org)
+
+
+    ![ResponsiveTest screen shot](img/demo.gif)
+
+
+    ## Download and run
+
+
+    * Download ResponsiveTest from the [Github page](http://github.com/nghuuphuoc/responsivetest)
+    directly.
+
+    It''s also possible to download the tool with [bower](http://bower.io):
+
+
+    ```bash
+
+    $ bower install responsivetest
+
+    ```
+
+
+    * Point your web server to the ResponsiveTest directory.
+
+    You can use python to simplify this step by running the following command:
+
+
+    ```bash
+
+    $ python -m SimpleHTTPServer <port>
+
+    ```
+
+
+    Then, access the browser at ```http://localhost:<port>```
+
+
+    > ResponsiveTest is written in CSS, Javascript, and HTML entirely.
+
+    > The tool uses an Ajax request to retrieve the devices data which is stored in
+    an external file (```data/devices.json```).
+
+    >
+
+    > As you know, the browser doesn''t allow to do it if the file is served locally
+    due to security concern
+
+    > ```Origin null is not allowed by Access-Control-Allow-Origin```
+
+    >
+
+    > That''s why we need to run it with a HTTP server.
+
+
+    ## Add more devices
+
+
+    The device sizes are defined in ```data/devices.json``` file.
+
+
+    If you want it to support more devices and screen resolutions, please fork the
+    project and pull a new request.
+
+
+    You don''t have to rebuild if you only change the ```data/devices.json``` file.
+
+
+    > By default, the tool will randomly load an URL found in ```randomUrls``` section
+    from ```data/devices.json```.
+
+
+    ## Build
+
+
+    The build process finds the CSS, JS files in the ```src``` and compresses them,
+    places compressed files in the ```dist``` directory.
+
+
+    First, use [grunt](http://gruntjs.com) to install the dependent packages:
+
+
+    ```bash
+
+    $ npm install grunt --save-dev
+
+    $ npm install grunt-contrib-copy --save-dev
+
+    $ npm install grunt-contrib-cssmin --save-dev
+
+    $ npm install grunt-contrib-uglify --save-dev
+
+    $ npm install grunt-ngmin --save-dev
+
+    ```
+
+
+    Then, execute the following command to build:
+
+
+    ```bash
+
+    $ grunt
+
+    ```
+
+
+    ## Author
+
+
+    Nguyen Huu Phuoc ([Email](mailto: phuoc@huuphuoc.me) / [Twitter](http://twitter.com/nghuuphuoc)
+    / [Github](http://github.com/nghuuphuoc))
+
+
+    Big thanks to the contributors:
+
+
+    * [michaseel](https://github.com/michaseel)
+
+    * [Emrehan Tuzun](https://github.com/emrehan)
+
+
+    ## License
+
+
+    Copyright (c) 2013 Nguyen Huu Phuoc
+
+
+    ResponsiveTest is licensed under the MIT license.
+
+    '
+  repo_url: https://github.com/jkabhishek/responsivetest
+- repo_description: Coursera Ruby Course Solution
+  repo_full_name: jkabhishek/ruby-course
+  repo_languages:
+    Ruby: 12828
+  repo_readme: '# ruby-course
+
+    Coursera Ruby Course Solution
+
+    '
+  repo_url: https://github.com/jkabhishek/ruby-course
+- repo_description: some learning data
+  repo_full_name: jkabhishek/sahayak
+  repo_languages:
+    Python: 5272
+  repo_readme: null
+  repo_url: https://github.com/jkabhishek/sahayak
+- repo_description: sahayaka
+  repo_full_name: jkabhishek/sahayaka
+  repo_languages:
+    CSS: 678
+    HTML: 3570
+    Python: 7810
+  repo_readme: '# sahayaka
+
+    sahayaka
+
+    '
+  repo_url: https://github.com/jkabhishek/sahayaka
+- repo_description: AWS security scanning checks
+  repo_full_name: jkabhishek/scans
+  repo_languages:
+    JavaScript: 297847
+  repo_readme: "[![CloudSploit](https://cloudsploit.com/img/logo-big-text-100.png\
+    \ \"CloudSploit\")](https://cloudsploit.com)\n\nCloudSploit Scans\n=================\n\
+    \n## Background\nCloudSploit scans is an open-source project designed to allow\
+    \ detection of security risks in an AWS account. These scripts are designed to\
+    \ run against an AWS account and return a series of potential misconfigurations\
+    \ and security risks.\n\n## Installation\nEnsure that NodeJS is installed. If\
+    \ not, install it from [here](https://nodejs.org/download/).\n\n```\ngit clone\
+    \ git@github.com:cloudsploit/scans.git\n```\n\n```\nnpm install\n```\n\n## Setup\n\
+    To begin using the scanner, edit the `index.js` file with your AWS key, secret,\
+    \ and optionally (for temporary credentials), a session token. You can also set\
+    \ a file containing credentials. To determine the permissions associated with\
+    \ your credentials, see the [permissions section below](#permissions). In the\
+    \ list of plugins in the `exports.js` file, comment out any plugins you do not\
+    \ wish to run. You can also skip entire regions by modifying the `skipRegions`\
+    \ array.\n\nYou can also set the typical environment variables expected by the\
+    \ aws sdks, namely `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`.\n\
+    \n### Cross Account Roles\nWhen using the [hosted scanner](https://cloudsploit.com/scan),\
+    \ you'll need to create a cross-account IAM role. Cross-account roles enable you\
+    \ to share access to your account with another AWS account using the same policy\
+    \ model that you're used to. The advantage is that cross-account roles are much\
+    \ more secure than key-based access, since an attacker who steals a cross-account\
+    \ role ARN still can't make API calls unless they also infiltrate the authorized\
+    \ AWS account.\n\nTo create a cross-account role:\n\n1. Navigate to the [IAM console](https://console.aws.amazon.com/iam/home).\n\
+    2. Click \"Roles\" and then \"Create New Role\".\n3. Provide a role name (suggested\
+    \ \"cloudsploit\").\n4. Select the \"Role for Cross-Account Access\" radio button.\n\
+    5. Click the \"Select\" button next to \"Allows IAM users from a 3rd party AWS\
+    \ account to access this account.\"\n6. Enter `057012691312` for the account ID\
+    \ (this is the ID of CloudSploit's AWS account).\n7. Copy the auto-generated external\
+    \ ID from the CloudSploit web page and paste it into the AWS IAM console textbox.\n\
+    8. Ensure that \"Require MFA\" is _not_ selected.\n9. Click \"Next Step\".\n10.\
+    \ Select the \"Security Audit\" policy. Then click \"Next Step\" again.\n11. Click\
+    \ through to create the role.\n\n## Permissions\nThe scans require read-only permissions\
+    \ to your account. This can be done by adding the \"Security Audit\" AWS managed\
+    \ policy to your IAM user or role.\n\n### Security Audit Managed Policy (Recommended)\n\
+    \nTo configure the managed policy:\n\n1. Open the [IAM Console](https://console.aws.amazon.com/iam/home).\n\
+    2. Find your user or role.\n3. Click the \"Permissions\" tab.\n4. Under \"Managed\
+    \ Policy\", click \"Attach policy\".\n5. In the filter box, enter \"Security Audit\"\
+    \n6. Select the \"Security Audit\" policy and save.\n\n### Inline Policy (Not\
+    \ Recommended)\n\nIf you'd prefer to be more restrictive, the following IAM policy\
+    \ contains the exact permissions used by the scan.\n\nWARNING: This policy will\
+    \ likely change as more plugins are written. If a test returns \"UNKNOWN\" it\
+    \ is likely missing a required permission. The preferred method is to use the\
+    \ \"Security Audit\" policy.\n\n```\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\"\
+    : [\n    {\n      \"Action\": [\n            \"cloudfront:ListDistributions\"\
+    ,\n            \"cloudtrail:DescribeTrails\",\n            \"configservice:DescribeConfigurationRecorders\"\
+    ,\n            \"configservice:DescribeConfigurationRecorderStatus\",\n      \
+    \      \"ec2:DescribeInstances\",\n            \"ec2:DescribeSecurityGroups\"\
+    ,\n            \"ec2:DescribeAccountAttributes\",\n            \"ec2:DescribeAddresses\"\
+    ,\n            \"ec2:DescribeVpcs\",\n            \"ec2:DescribeFlowLogs\",\n\
+    \            \"ec2:DescribeSubnets\",\n            \"elasticloadbalancing:DescribeLoadBalancerPolicies\"\
+    ,\n            \"elasticloadbalancing:DescribeLoadBalancers\",\n            \"\
+    iam:GenerateCredentialReport\",\n            \"iam:ListServerCertificates\",\n\
+    \            \"iam:ListGroups\",\n            \"iam:GetGroup\",\n            \"\
+    iam:GetAccountPasswordPolicy\",\n            \"iam:ListUsers\",\n            \"\
+    iam:ListUserPolicies\",\n            \"iam:ListAttachedUserPolicies\",\n     \
+    \       \"kms:ListKeys\",\n            \"kms:DescribeKey\",\n            \"kms:GetKeyRotationStatus\"\
+    ,\n            \"rds:DescribeDBInstances\",\n            \"rds:DescribeDBClusters\"\
+    ,\n            \"route53domains:ListDomains\",\n            \"s3:GetBucketVersioning\"\
+    ,\n            \"s3:GetBucketLogging\",\n            \"s3:GetBucketAcl\",\n  \
+    \          \"s3:ListBuckets\",\n            \"ses:ListIdentities\",\n        \
+    \    \"ses:getIdentityDkimAttributes\"\n      ],\n      \"Effect\": \"Allow\"\
+    ,\n      \"Resource\": \"*\"\n    }\n  ]\n}\n```\n\n## Running\n\nTo run a standard\
+    \ scan, showing all outputs and results, simply run:\n\n```\nnode index.js\n```\n\
+    \n## Optional Plugins\n\nSome plugins may require additional permissions not outlined\
+    \ above. Since their required IAM permissions are not included in the `SecurityAudit`\
+    \ managed policy, these plugins are not included in the `exports.js` file by default.\
+    \ To enable these plugins, uncomment them from the `exports.js` file, if applicable,\
+    \ add the policies required to an inline IAM policy, and re-run the scan.\n\n\
+    ## Compliance\n\nCloudSploit also supports mapping of its plugins to particular\
+    \ compliance policies. To run the compliance scan, use the `--compliance` flag.\
+    \ For example:\n```\nnode index.js --compliance=hipaa\n```\n\nCloudSploit currently\
+    \ supports the following compliance mappings:\n\n### HIPAA\n\nHIPAA scans map\
+    \ CloudSploit plugins to the Health Insurance Portability and Accountability Act\
+    \ of 1996.\n\n## Architecture\n\nCloudSploit works in two phases. First, it queries\
+    \ the AWS APIs for various metadata about your account. This is known as the \"\
+    collection\" phase. Once all the necessary data has been collected, the result\
+    \ is passed to the second phase - \"scanning.\" The scan uses the collected data\
+    \ to search for potential misconfigurations, risks, and other security issues.\
+    \ These are then provided as output.\n\n## Writing a Plugin\n### Collection Phase\n\
+    To write a plugin, you must understand what AWS API calls your scan makes. These\
+    \ must be added to the `collect.js` file. This file determines the AWS API calls\
+    \ and the order in which they are made. For example:\n```\nCloudFront: {\n  listDistributions:\
+    \ {\n    property: 'DistributionList',\n    secondProperty: 'Items'\n  }\n},\n\
+    ```\nThis declaration tells the CloudSploit collection engine to query the CloudFront\
+    \ service using the `listDistributions` call and then save the results returned\
+    \ under `DistributionList.Items`.\n\nThe second section in `collect.js` is `postcalls`,\
+    \ which is an array of objects defining API calls that rely on other calls being\
+    \ returned first. For example, if you need to first query for all EC2 instances,\
+    \ and then loop through each instance and run a more detailed call, you would\
+    \ add the `EC2:DescribeInstances` call in the first `calls` section and then add\
+    \ the more detailed call in `postCalls` setting it to rely on the output of `DescribeInstances`.\n\
+    \nAn example:\n```\ngetGroup: {\n  reliesOnService: 'iam',\n  reliesOnCall: 'listGroups',\n\
+    \  filterKey: 'GroupName',\n  filterValue: 'GroupName'\n},\n```\nThis section\
+    \ tells CloudSploit to wait until the `IAM:listGroups` call has been made, and\
+    \ then loop through the data that is returned. The `filterKey` tells CloudSploit\
+    \ the name of the key from the original response, while `filterValue` tells it\
+    \ which property to set in the `getGroup` call filter. For example: `iam.getGroup({GroupName:abc})`\
+    \ where `abc` is the `GroupName` from the returned list. CloudSploit will loop\
+    \ through each response, re-invoking `getGroup` for each element.\n\n### Scanning\
+    \ Phase\nAfter the data has been collected, it is passed to the scanning engine\
+    \ when the results are analyzed for risks. Each plugin must export the following:\n\
+    \n* Exports the following:\n  * ```title``` (string): a user-friendly title for\
+    \ the plugin\n  * ```category``` (string): the AWS category (EC2, RDS, ELB, etc.)\n\
+    \  * ```description``` (string): a description of what the plugin does\n  * ```more_info```\
+    \ (string): a more detailed description of the risk being tested for\n  * ```link```\
+    \ (string): an AWS help URL describing the service or risk, preferably with mitigation\
+    \ methods\n  * ```recommended_action``` (string): what the user should do to mitigate\
+    \ the risk found\n  * ```run``` (function): a function that runs the test (see\
+    \ below)\n* Accepts a ```collection``` object via the run function containing\
+    \ the full collection object obtained in the first phase.\n* Calls back with the\
+    \ results and the data source.\n\n### Result Codes\nEach test has a result code\
+    \ that is used to determine if the test was successful and its risk level. The\
+    \ following codes are used:\n\n* 0: OKAY: No risks\n* 1: WARN: The result represents\
+    \ a potential misconfiguration or issue but is not an immediate risk\n* 2: FAIL:\
+    \ The result presents an immediate risk to the security of the account\n* 3: UNKNOWN:\
+    \ The results could not be determined (API failure, wrong permissions, etc.)\n\
+    \n### Tips for Writing Plugins\n* Many security risks can be detected using the\
+    \ same API calls. To minimize the number of API calls being made, utilize the\
+    \ `cache` helper function to cache the results of an API call made in one test\
+    \ for future tests. For example, two plugins: \"s3BucketPolicies\" and \"s3BucketPreventDelete\"\
+    \ both call APIs to list every S3 bucket. These can be combined into a single\
+    \ plugin \"s3Buckets\" which exports two tests called \"bucketPolicies\" and \"\
+    preventDelete\". This way, the API is called once, but multiple tests are run\
+    \ on the same results.\n* Ensure AWS API calls are being used optimally. For example,\
+    \ call describeInstances with empty parameters to get all instances, instead of\
+    \ calling describeInstances multiple times looping through each instance name.\n\
+    * Use async.eachLimit to reduce the number of simultaneous API calls. Instead\
+    \ of using a for loop on 100 requests, spread them out using async's each limit.\n\
+    \n### Example\nTo more clearly illustrate writing a new plugin, let's consider\
+    \ the \"IAM Empty Groups\" plugin. First, we know that we will need to query for\
+    \ a list of groups via `listGroups`, then loop through each group and query for\
+    \ the more detailed set of data via `getGroup`.\n\nWe'll add these API calls to\
+    \ `collect.js`. First, under `calls` add:\n\n```\nIAM: {\n  listGroups: {\n  \
+    \  property: 'Groups'\n  }\n},\n```\nThe `property` tells CloudSploit which property\
+    \ to read in the response from AWS.\n\nThen, under `postCalls`, add:\n```\nIAM:\
+    \ {\n  getGroup: {\n    reliesOnService: 'iam',\n    reliesOnCall: 'listGroups',\n\
+    \    filterKey: 'GroupName',\n    filterValue: 'GroupName'\n  }\n},\n```\nCloudSploit\
+    \ will first get the list of groups, then, it will loop through each one, using\
+    \ the group name to get more detailed info via `getGroup`.\n\nNext, we'll write\
+    \ the plugin. Create a new file in the `plugins/iam` folder called `emptyGroups.js`\
+    \ (this plugin already exists, but you can create a similar one for the purposes\
+    \ of this example).\n\nIn the file, we'll be sure to export the plugin's title,\
+    \ category, description, link, and more information about it. Additionally, we\
+    \ will add any API calls it makes:\n```\napis: ['IAM:listGroups', 'IAM:getGroup'],\n\
+    ```\nIn the `run` function, we can obtain the output of the collection phase from\
+    \ earlier by doing:\n```\nvar listGroups = helpers.addSource(cache, source,\n\
+    \        ['iam', 'listGroups', region]);\n```\nThen, we can loop through each\
+    \ of the results and do:\n```\nvar getGroup = helpers.addSource(cache, source,\n\
+    \  ['iam', 'getGroup', region, group.GroupName]);\n```\nThe `helpers` function\
+    \ ensures that the proper results are returned from the collection and that they\
+    \ are saved into a \"source\" variable which can be returned with the results.\n\
+    \nNow, we can write the plugin functionality by checking for the data relevant\
+    \ to our requirements:\n```\nif (!getGroup || getGroup.err || !getGroup.data ||\
+    \ !getGroup.data.Users) {\n  helpers.addResult(results, 3, 'Unable to query for\
+    \ group: ' + group.GroupName, 'global', group.Arn);\n} else if (!getGroup.data.Users.length)\
+    \ {\n  helpers.addResult(results, 1, 'Group: ' + group.GroupName + ' does not\
+    \ contain any users', 'global', group.Arn);\n  return cb();\n} else {\n  helpers.addResult(results,\
+    \ 0, 'Group: ' + group.GroupName + ' contains ' + getGroup.data.Users.length +\
+    \ ' user(s)', 'global', group.Arn);\n}\n```\nThe `addResult` function ensures\
+    \ we are adding the results to the `results` array in the proper format. This\
+    \ function accepts the following:\n```\n(results array, score, message, region,\
+    \ resource)\n```\nThe `resource` is optional, and the `score` must be between\
+    \ 0 and 3 to indicate PASS, WARN, FAIL, or UNKNOWN.\n"
+  repo_url: https://github.com/jkabhishek/scans
+- repo_description: OpenStack Testing (Tempest) of an existing cloud
+  repo_full_name: jkabhishek/tempest
+  repo_languages:
+    Python: 4486779
+    Shell: 7259
+  repo_readme: "========================\nTeam and repository tags\n========================\n\
+    \n.. image:: https://governance.openstack.org/tc/badges/tempest.svg\n    :target:\
+    \ https://governance.openstack.org/tc/reference/tags/index.html\n\n.. Change things\
+    \ from this point on\n\nTempest - The OpenStack Integration Test Suite\n==============================================\n\
+    \nThe documentation for Tempest is officially hosted at:\nhttps://docs.openstack.org/tempest/latest/\n\
+    \nThis is a set of integration tests to be run against a live OpenStack\ncluster.\
+    \ Tempest has batteries of tests for OpenStack API validation,\nscenarios, and\
+    \ other specific tests useful in validating an OpenStack\ndeployment.\n\nDesign\
+    \ Principles\n-----------------\nTempest Design Principles that we strive to live\
+    \ by.\n\n- Tempest should be able to run against any OpenStack cloud, be it a\n\
+    \  one node DevStack install, a 20 node LXC cloud, or a 1000 node KVM\n  cloud.\n\
+    - Tempest should be explicit in testing features. It is easy to auto\n  discover\
+    \ features of a cloud incorrectly, and give people an\n  incorrect assessment\
+    \ of their cloud. Explicit is always better.\n- Tempest uses OpenStack public\
+    \ interfaces. Tests in Tempest should\n  only touch public OpenStack APIs.\n-\
+    \ Tempest should not touch private or implementation specific\n  interfaces. This\
+    \ means not directly going to the database, not\n  directly hitting the hypervisors,\
+    \ not testing extensions not\n  included in the OpenStack base. If there are some\
+    \ features of\n  OpenStack that are not verifiable through standard interfaces,\
+    \ this\n  should be considered a possible enhancement.\n- Tempest strives for\
+    \ complete coverage of the OpenStack API and\n  common scenarios that demonstrate\
+    \ a working cloud.\n- Tempest drives load in an OpenStack cloud. By including\
+    \ a broad\n  array of API and scenario tests Tempest can be reused in whole or\
+    \ in\n  parts as load generation for an OpenStack cloud.\n- Tempest should attempt\
+    \ to clean up after itself, whenever possible\n  we should tear down resources\
+    \ when done.\n- Tempest should be self-testing.\n\nQuickstart\n----------\n\n\
+    To run Tempest, you first need to create a configuration file that will tell\n\
+    Tempest where to find the various OpenStack services and other testing behavior\n\
+    switches. Where the configuration file lives and how you interact with it\ndepends\
+    \ on how you'll be running Tempest. There are 2 methods of using Tempest.\nThe\
+    \ first, which is a newer and recommended workflow treats Tempest as a system\n\
+    installed program. The second older method is to run Tempest assuming your\nworking\
+    \ dir is the actually Tempest source repo, and there are a number of\nassumptions\
+    \ related to that. For this section we'll only cover the newer method\nas it is\
+    \ simpler, and quicker to work with.\n\n#. You first need to install Tempest.\
+    \ This is done with pip after you check out\n   the Tempest repo::\n\n    $ git\
+    \ clone https://git.openstack.org/openstack/tempest\n    $ pip install tempest/\n\
+    \n   This can be done within a venv, but the assumption for this guide is that\n\
+    \   the Tempest CLI entry point will be in your shell's PATH.\n\n#. Installing\
+    \ Tempest may create a ``/etc/tempest dir``, however if one isn't\n   created\
+    \ you can create one or use ``~/.tempest/etc`` or ``~/.config/tempest`` in\n \
+    \  place of ``/etc/tempest``. If none of these dirs are created Tempest will create\n\
+    \   ``~/.tempest/etc`` when it's needed. The contents of this dir will always\n\
+    \   automatically be copied to all ``etc/`` dirs in local workspaces as an initial\n\
+    \   setup step. So if there is any common configuration you'd like to be shared\n\
+    \   between local Tempest workspaces it's recommended that you pre-populate it\n\
+    \   before running ``tempest init``.\n\n#. Setup a local Tempest workspace. This\
+    \ is done by using the tempest init\n   command::\n\n    $ tempest init cloud-01\n\
+    \n   which also works the same as::\n\n    $ mkdir cloud-01 && cd cloud-01 &&\
+    \ tempest init\n\n   This will create a new directory for running a single Tempest\
+    \ configuration.\n   If you'd like to run Tempest against multiple OpenStack deployments\
+    \ the idea\n   is that you'll create a new working directory for each to maintain\
+    \ separate\n   configuration files and local artifact storage for each.\n\n#.\
+    \ Then ``cd`` into the newly created working dir and also modify the local\n \
+    \  config files located in the ``etc/`` subdir created by the ``tempest init``\n\
+    \   command. Tempest is expecting a ``tempest.conf`` file in etc/ so if only a\n\
+    \   sample exists you must rename or copy it to tempest.conf before making\n \
+    \  any changes to it otherwise Tempest will not know how to load it. For\n   details\
+    \ on configuring Tempest refer to the\n   `Tempest Configuration <https://docs.openstack.org/tempest/latest/configuration.html#tempest-configuration>`_\n\
+    \n#. Once the configuration is done you're now ready to run Tempest. This can\n\
+    \   be done using the `Tempest Run <https://docs.openstack.org/tempest/latest/run.html#tempest-run>`_\n\
+    \   command. This can be done by either\n   running::\n\n    $ tempest run\n\n\
+    \   from the Tempest workspace directory. Or you can use the ``--workspace``\n\
+    \   argument to run in the workspace you created regardless of your current\n\
+    \   working directory. For example::\n\n    $ tempest run --workspace cloud-01\n\
+    \n   There is also the option to use `stestr`_ directly. For example, from\n \
+    \  the workspace dir run::\n\n    $ stestr run --black-regex '\\[.*\\bslow\\b.*\\\
+    ]' '^tempest\\.(api|scenario)'\n\n   will run the same set of tests as the default\
+    \ gate jobs. Or you can\n   use `unittest`_ compatible test runners such as `testr`_,\
+    \ `pytest`_ etc.\n\n.. _unittest: https://docs.python.org/3/library/unittest.html\n\
+    .. _testr: https://testrepository.readthedocs.org/en/latest/MANUAL.html\n.. _stestr:\
+    \ https://stestr.readthedocs.org/en/latest/MANUAL.html\n.. _pytest: https://docs.pytest.org/en/latest/\n\
+    \nLibrary\n-------\nTempest exposes a library interface. This interface is a stable\
+    \ interface and\nshould be backwards compatible (including backwards compatibility\
+    \ with the\nold tempest-lib package, with the exception of the import). If you\
+    \ plan to\ndirectly consume Tempest in your project you should only import code\
+    \ from the\nTempest library interface, other pieces of Tempest do not have the\
+    \ same\nstable interface and there are no guarantees on the Python API unless\
+    \ otherwise\nstated.\n\nFor more details refer to the `library documentation\n\
+    <https://docs.openstack.org/tempest/latest/library.html#library>`_\n\nRelease\
+    \ Versioning\n------------------\n`Tempest Release Notes <https://docs.openstack.org/releasenotes/tempest>`_\n\
+    shows what changes have been released on each version.\n\nTempest's released versions\
+    \ are broken into 2 sets of information. Depending on\nhow you intend to consume\
+    \ Tempest you might need\n\nThe version is a set of 3 numbers:\n\nX.Y.Z\n\nWhile\
+    \ this is almost `semver`_ like, the way versioning is handled is slightly\ndifferent:\n\
+    \nX is used to represent the supported OpenStack releases for Tempest tests\n\
+    in-tree, and to signify major feature changes to Tempest. It's a monotonically\n\
+    increasing integer where each version either indicates a new supported OpenStack\n\
+    release, the drop of support for an OpenStack release (which will coincide with\n\
+    the upstream stable branch going EOL), or a major feature lands (or is removed)\n\
+    from Tempest.\n\nY.Z is used to represent library interface changes. This is treated\
+    \ the same\nway as minor and patch versions from `semver`_ but only for the library\n\
+    interface. When Y is incremented we've added functionality to the library\ninterface\
+    \ and when Z is incremented it's a bug fix release for the library.\nAlso note\
+    \ that both Y and Z are reset to 0 at each increment of X.\n\n.. _semver: https://semver.org/\n\
+    \nConfiguration\n-------------\n\nDetailed configuration of Tempest is beyond\
+    \ the scope of this\ndocument, see `Tempest Configuration Documentation\n<https://docs.openstack.org/tempest/latest/configuration.html#tempest-configuration>`_\n\
+    for more details on configuring Tempest.\nThe ``etc/tempest.conf.sample`` attempts\
+    \ to be a self-documenting\nversion of the configuration.\n\nYou can generate\
+    \ a new sample tempest.conf file, run the following\ncommand from the top level\
+    \ of the Tempest directory::\n\n    $ tox -e genconfig\n\nThe most important pieces\
+    \ that are needed are the user ids, OpenStack\nendpoints, and basic flavors and\
+    \ images needed to run tests.\n\nUnit Tests\n----------\n\nTempest also has a\
+    \ set of unit tests which test the Tempest code itself. These\ntests can be run\
+    \ by specifying the test discovery path::\n\n    $ stestr --test-path ./tempest/tests\
+    \ run\n\nBy setting ``--test-path`` option to ./tempest/tests it specifies that\
+    \ test discover\nshould only be run on the unit test directory. The default value\
+    \ of ``test_path``\nis ``test_path=./tempest/test_discover`` which will only run\
+    \ test discover on the\nTempest suite.\n\nAlternatively, there are the py27 and\
+    \ py36 tox jobs which will run the unit\ntests with the corresponding version\
+    \ of python.\n\nOne common activity is to just run a single test, you can do this\
+    \ with tox\nsimply by specifying to just run py27 or py36 tests against a single\
+    \ test::\n\n    $ tox -e py36 -- -n tempest.tests.test_microversions.TestMicroversionsTestsClass.test_config_version_none_23\n\
+    \nOr all tests in the test_microversions.py file::\n\n    $ tox -e py36 -- -n\
+    \ tempest.tests.test_microversions\n\nYou may also use regular expressions to\
+    \ run any matching tests::\n\n    $ tox -e py36 -- test_microversions\n\nAdditionally,\
+    \ when running a single test, or test-file, the ``-n/--no-discover``\nargument\
+    \ is no longer required, however it may perform faster if included.\n\nFor more\
+    \ information on these options and details about stestr, please see the\n`stestr\
+    \ documentation <https://stestr.readthedocs.io/en/latest/MANUAL.html>`_.\n\nPython\
+    \ 3.x\n----------\n\nStarting during the Pike cycle Tempest has a gating CI job\
+    \ that runs Tempest\nwith Python 3. Any Tempest release after 15.0.0 should fully\
+    \ support running\nunder Python 3 as well as Python 2.7.\n\nLegacy run method\n\
+    -----------------\n\nThe legacy method of running Tempest is to just treat the\
+    \ Tempest source code\nas a python unittest repository and run directly from the\
+    \ source repo. When\nrunning in this way you still start with a Tempest config\
+    \ file and the steps\nare basically the same except that it expects you know where\
+    \ the Tempest code\nlives on your system and requires a bit more manual interaction\
+    \ to get Tempest\nrunning. For example, when running Tempest this way things like\
+    \ a lock file\ndirectory do not get generated automatically and the burden is\
+    \ on the user to\ncreate and configure that.\n\nTo start you need to create a\
+    \ configuration file. The easiest way to create a\nconfiguration file is to generate\
+    \ a sample in the ``etc/`` directory ::\n\n    $ cd $TEMPEST_ROOT_DIR\n    $ oslo-config-generator\
+    \ --config-file \\\n        tempest/cmd/config-generator.tempest.conf \\\n   \
+    \     --output-file etc/tempest.conf\n\nAfter that, open up the ``etc/tempest.conf``\
+    \ file and edit the\nconfiguration variables to match valid data in your environment.\n\
+    This includes your Keystone endpoint, a valid user and credentials,\nand reference\
+    \ data to be used in testing.\n\n.. note::\n\n    If you have a running DevStack\
+    \ environment, Tempest will be\n    automatically configured and placed in ``/opt/stack/tempest``.\
+    \ It\n    will have a configuration file already set up to work with your\n  \
+    \  DevStack installation.\n\nTempest is not tied to any single test runner, but\
+    \ `testr`_ is the most commonly\nused tool. Also, the nosetests test runner is\
+    \ **not** recommended to run Tempest.\n\nAfter setting up your configuration file,\
+    \ you can execute the set of Tempest\ntests by using ``testr`` ::\n\n    $ testr\
+    \ run --parallel\n\nTo run one single test serially ::\n\n    $ testr run tempest.api.compute.servers.test_servers_negative.ServersNegativeTestJSON.test_reboot_non_existent_server\n\
+    \nTox also contains several existing job configurations. For example::\n\n   \
+    \ $ tox -e full\n\nwhich will run the same set of tests as the OpenStack gate.\
+    \ (it's exactly how\nthe gate invokes Tempest) Or::\n\n    $ tox -e smoke\n\n\
+    to run the tests tagged as smoke.\n"
+  repo_url: https://github.com/jkabhishek/tempest
+- repo_description: ':memo:'
+  repo_full_name: jkabhishek/terraform-example
+  repo_languages: {}
+  repo_readme: '# terraform-example
+
+    :memo:
+
+    '
+  repo_url: https://github.com/jkabhishek/terraform-example
+- repo_description: ':memo: Today I Learned'
+  repo_full_name: jkabhishek/til
+  repo_languages:
+    Python: 5363
+  repo_readme: '# TIL
+
+    :memo: Today I Learned
+
+
+    We constantly learn new things. This is a repo to share those learnings. TILs
+    are short Markdown documents (a few sentences + example code) explaining concepts,
+    bits of syntax, commands, or tips I''ve recently learned.
+
+
+    For new TILs, watch this repo
+
+
+    # About
+
+
+    I stole this idea from [jbranchaud/til](https://github.com/jbranchaud/til).
+
+
+    ### Categories
+
+
+    * [Ack](#ack)
+
+    * [Github](#github)
+
+    * [screen](#screen)
+
+    * [python](#python)
+
+    * [linux](#linux)
+
+
+
+    ---
+
+
+    ### Ack
+
+
+    ### Github
+
+
+    - [List of Github markdown emoji #cheatsheet](github/github-markdown-emoji-cheatsheet.md)
+
+
+    ### Screen
+
+    - [Linux Screen Cheatsheet](screen/linux-screen-cheatsheet.md)
+
+
+    ### Python
+
+    - [Python Data Structures](python/contents.md)
+
+
+    ### Linux
+
+    - [Linux Basics](linux/contents.md)
+
+    '
+  repo_url: https://github.com/jkabhishek/til
+- repo_description: Todo application based on python django rest framework
+  repo_full_name: jkabhishek/todobackend
+  repo_languages:
+    Makefile: 6318
+    Python: 13993
+    Shell: 319
+  repo_readme: "# DevOps Learning Initiative #DevOpsInitiative\nThis project is a\
+    \ part of devops learning initiave to get all related project\nsearch #devOpsInitiative\n\
+    \n> some good links to read\n### a. https://caremad.io/posts/2013/07/setup-vs-requirement/\n\
+    ### b. https://hynek.me/articles/virtualenv-lives/\n### c. http://python.org/dev/peps/pep-0427\n\
+    \n1.  Test\n2.  Build\n3.  Release\n4.  Deploy\n\n# todobackend\nIt is a sample\
+    \ django rest framework TodoApp \n\n### 1.  Setup Guide\n```\n# clone this repo\
+    \ \ngit clone https://github.com/abhishek-jaiswal/todobackend.git\n\n# go to project\
+    \ directory\ncd todobackend/src\n\n# install requirements\npip install -r requirements.txt\n\
+    \n# run migrations and \npython manage.py makemigrations --settings=todobackend.settings.base\n\
+    python manage.py migrate --settings=todobackend.settings.base\n\n# start app \n\
+    python manage.py runserver --settings=todobackend.settings.base\n\n\n# to run\
+    \ unit tests\npython manage.py test --settings=todobackend.settings.test\n```\n"
+  repo_url: https://github.com/jkabhishek/todobackend
+- repo_description: todobackend-base-image
+  repo_full_name: jkabhishek/todobackend-base
+  repo_languages:
+    Shell: 77
+  repo_readme: '# DevOps Learning Initiative #DevOpsInitiative
+
+    This project is a part of devops learning initiave to get all related project
+
+    search #devOpsInitiative
+
+
+
+    # DevOps Base Image repository
+
+
+    ### Continious Delivery Workflow
+
+
+    ### Docker Images Hierarchy 1
+
+    ![Docker Images Hierarchy](images/dih1.png "Docker Images Hierarchy 1")
+
+
+    ### Docker Images Hierarchy 2
+
+    ![Docker Images Hierarchy](images/dih2.png "Docker Images Hierarchy 2")
+
+
+    ### Docker Images Hierarchy 3
+
+    ![Docker Images Hierarchy](images/dih3.png "Docker Images Hierarchy 3")'
+  repo_url: https://github.com/jkabhishek/todobackend-base
+- repo_description: null
+  repo_full_name: jkabhishek/tracker
+  repo_languages: {}
+  repo_readme: '# tracker'
+  repo_url: https://github.com/jkabhishek/tracker
+- repo_description: 'vboxmanage scripts to launch vm '
+  repo_full_name: jkabhishek/vboxmanage
+  repo_languages:
+    Shell: 1548
+  repo_readme: "# vboxmanage\nvboxmanage scripts to launch vm \nislo link https://www.dropbox.com/s/uw1g8bene4mlp4v/autoinstall_ubuntu_base.iso?dl=0"
+  repo_url: https://github.com/jkabhishek/vboxmanage
+- repo_description: my personal vim config
+  repo_full_name: jkabhishek/vim-config
+  repo_languages:
+    Vim script: 2656
+  repo_readme: '# vim-config
+
+    my personal vim config
+
+    ## Installation steps
+
+    Install vundle
+
+    `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+
+    `git clone https://github.com/abhishek-jaiswal/vim-config.git`
+
+    `cp vim-config/.vimrc ~/.vimrc`
+
+    `vim +PluginInstall +qall`
+
+
+
+    echo    "dont forget to install / update YoucompleteMe"
+
+    echo    "cd ~/.vim/bundle/YouCompleteMe"
+
+    echo    "./install.py --clang-completer"
+
+    '
+  repo_url: https://github.com/jkabhishek/vim-config
+- repo_description: null
+  repo_full_name: jkabhishek/zeppelin
+  repo_languages: {}
+  repo_readme: "# Project Zeppelin / GDG DevFest 2014 site template\n\n### About \n\
+    Project Zeppelin allows you to setup awesome GDG DevFest site in 5 minutes. \n\
+    \nProject is builded on top of [Jekyll](http://jekyllrb.com/) - simple, blog-aware,\
+    \ static site generator. Jekyll also happens to be the engine behind GitHub Pages,\
+    \ which means you can use Jekyll to host your website from GitHub\u2019s servers\
+    \ for free. [Learn more about Jekyll](http://jekyllrb.com/).\n\nTemplate is brought\
+    \ by [GDG Lviv](http://lviv.gdg.org.ua/) team.\n\n### Live demo http://gdg-x.github.io/zeppelin/\n\
+    \n### Features\n* Easy to setup\n* Simple and responsive design\n* Integrated\
+    \ speakers and sessions management\n* SVG icons\n* SEO friendly\n\n\n### Quick-start\
+    \ guide\n1. [Fork](https://github.com/gdg-x/zeppelin/fork) this repo\n2. Clone\
+    \ locally\n3. Update ```_config.yml``` \n4. Select what content blocks do you\
+    \ need\n5. Push changes to ```gh-pages``` branch\n6. Enjoy your awesome DevFest\
+    \ site at ```http://[your github name].github.io/zeppelin/```\n\nOr watch project\
+    \ presentation from [GDG[x] Townhall meeting](http://www.youtube.com/watch?v=xYmhheoLjcI).\
+    \ Slides available [here](https://docs.google.com/presentation/d/19aM7yNl_orDaCNND5LpCY3fShb6PyMltnzYfKvV8R_8/edit?usp=sharing)\n\
+    \n\n## Local development\n\nCheck if you have [all requirments for local environment](http://jekyllrb.com/docs/installation/),\
+    \ install [Jekyll server](http://jekyllrb.com/docs/quickstart/) gem and run this\
+    \ command from project root folder:\n\n```bash\n    jekyll serve -w\n```\nSite\
+    \ will be available at http://127.0.0.1:4000/zeppelin/\n\n**NOTE:** in this mode\
+    \ all changes to html and data files will be automatically regenerated, but after\
+    \ changing ```_config.yml``` you have to restart server.\n\n### Sass support\n\
+    Install Sass. Ruby uses Gems to manage its various packages of code like Sass.\
+    \ In your open terminal window type:\n```bash\n\tgem install sass\n```\n\nAlso\
+    \ you need to install the latest version of [Compass](http://compass-style.org/)\
+    \ with command\n```bash\n\tgem install compass --pre\n```\n\nThen for combining\
+    \ media queries you can use [Sass::MediaQueryCombiner](https://github.com/aaronjensen/sass-media_query_combiner)\
+    \ plugin. Install with command\n```bash\n\tgem install sass-media_query_combiner\n\
+    ```\n\nAnd for prefixing css3 properties use [Autoprefixer](https://github.com/ai/autoprefixer)\n\
+    ```bash\n\tgem install autoprefixer-rails\n```\n\nTo watch changes in `.sass`\
+    \ files and compile it to the `.css` on a fly, run this command from `\\_sass\\\
+    ` folder\n```bash\n\tcompass watch -c config.rb -e production\n```\n\nLearn more\
+    \ about Sass development from [documentation](https://github.com/gdg-x/zeppelin/wiki/Sass-development).\n\
+    \n\n### Resource optimizations (optional)\n\nYou can optimize images and minify\
+    \ css and javascript automaticaly (for now only on Windows).\nBut for Mac OS users\
+    \ available amazing tool - [imageoptim](https://imageoptim.com/). Thanks [@raphaelsavina](https://github.com/raphaelsavina)\
+    \ for link.\nOptimize all images by running this script from `/automation/images/`\
+    \ folder:\n```bash\n    all_image_optimization.bat -d -jtran -pout -pquant -optip\
+    \ -gsicle -svgo\n```\n\nTo minify CSS and JS run `minify_all.bat` from `/automation/minifying/`\
+    \ folder:\n```bash\n    minify_all.bat\n```\n\nLearn more about available optimization\
+    \ options from [documentation](https://github.com/gdg-x/zeppelin/wiki/Resources-optimizations).\n\
+    \n### Documentation\nQuick-start guide is not enough? Checkout [full documentation](https://github.com/gdg-x/zeppelin/wiki).\n\
+    \n\n### TODO List\n* Optimization scripts for mac and linux\n\n### Known issues\n\
+    * Scrolling on open navbar\n\n### Used libraries\n* [Bootstrap](https://github.com/twbs/bootstrap)\n\
+    * [Animate.css](https://github.com/daneden/animate.css)\n* [Waves](https://github.com/publicis-indonesia/Waves)\n\
+    * [jquery.appear](https://github.com/bas2k/jquery.appear)\n* [jQuery countTo Plugin](https://github.com/mhuggins/jquery-countTo)\n\
+    * [Typed.js](https://github.com/mattboldt/typed.js)\n* [Sticky-kit](https://github.com/leafo/sticky-kit)\n\
+    \n### Who is using template?\nGoing to use template? Go on! The only thing we\
+    \ ask - let us know at [*lviv@gdg.org.ua*](mailto:lviv@gdg.org.ua) so we can include\
+    \ you to this list, or make a pull request.\n\n* [GDG DevFest Ukraine 2014](http://devfest.gdg.org.ua/)\n\
+    * [GDG DevFest Istanbul 2014](http://devfesttr.com/)\n* [GDG DevFest Omsk 2014](http://gdg-devfest-omsk.org/)\n\
+    * [GDG Bangalore Site](http://gdgbangalore.github.io/)\n* [2014 \u5357\u9633 GDG\
+    \ Devfest \u5927\u4F1A](http://devfest.gdgny.org)\n* [DevFest Nordeste 2014](http://2014.devfestne.com.br/)\n\
+    * [GDG DevFest The Netherlands](http://www.devfest.nl/)\n* [DevFest Centro-Oeste\
+    \ 2014](http://www.devfestcentrooeste.com.br/)\n* [DevFest SP 2014](http://sp.devfest.com.br/)\n\
+    * [Android DevFest Space Coast](http://gdg-space-coast.github.io/zeppelin/)\n\
+    * [DevFest in Baroda](devfest.gdgbaroda.com)\n* [GDG Hi Pic (France)](http://maximemularz.github.io/zeppelin/)\n\
+    * [GDG DevFest C\xF3rdoba 2014](http://gdgcordoba.github.io/zeppelin/)\n* [GDG\
+    \ DevFest D\xFCsseldorf 2014](http://www.gdg-dus.de/DevFest2014/)\n* [GDG Dublin\
+    \ DevFest 2014](http://gdg-dublin.appspot.com/)\n* [GDG Makerere DevFest 2014](http://gdgmakerere.github.io/)\n\
+    * [GDG Busitema DevFest 2014](http://gdgbusitema.github.io/)\n* [DevFest Vienna\
+    \ 2014](http://www.devfest.at/)\n* [Android Wear DevFest](http://devfest.gdgnorthjersey.com/wear2014/)\n\
+    * [GDG SLAU DevFest 2014](http://gdgslau.github.io/)\n* [GDG Korea DevFair 2014](http://devfair2014.gdg.kr/)\n\
+    * [Lima DevFest](http://limadevfest.com/)\n* [GDG DevFest Kota Kinabalu 2014](http://devfest.gdgkk.info/)\n\
+    * [GDG DevFest Belgium](http://gdg-brussels.org/DevFest2014/)\n* [DevFest Praha\
+    \ 2014](http://devfest.cz/)\n* [GDG DevFest Kosice](http://devfest.sk/)\n* [DevFest\
+    \ Birgunj](gdgbirgunj.github.io/DevFest2014/)\n* [DevFest Lima 2014](http://limadevfest.com/)\n\
+    \n### Contributors\n* Design and web development: [Oleh Zasadnyy](https://github.com/ozasadnyy)\n\
+    * Idea: [Vitaliy Zasadnyy](https://github.com/zasadnyy)\n\n### Licence\nProject\
+    \ is published under the [MIT licence](https://github.com/gdg-x/zeppelin/blob/master/LICENSE.txt).\
+    \ Feel free to clone and modify repo as you want, but don't forget to add reference\
+    \ to authors :)\n\n\n"
+  repo_url: https://github.com/jkabhishek/zeppelin
+- repo_description: The feastie rewrite
+  repo_full_name: valerierose/feastie
+  repo_languages:
+    CSS: 6461
+    JavaScript: 57440
+    Python: 61542
+    Shell: 102
+  repo_readme: '# Feastie
+
+
+    This repo contains the feastie bot, api, and webapp.
+
+
+    ### Configs
+
+
+    Copy `dot.env.example` to `.env` and update the variables.
+
+
+    run ` export PYTHONPATH="${PYTHONPATH}:${PWD}"`
+
+
+
+    ### Running the api and website
+
+
+    This needs a lot more documentation...
+
+
+    To run the development environment
+
+
+    (Have a populated database.)
+
+
+    ```
+
+    mkdir fakes3
+
+    fakes3 -r fakes3 -p 4567
+
+
+    pip install -r requirements.txt
+
+    cd api
+
+    python main.py
+
+
+    cd ../app
+
+    npm run dev
+
+    ```
+
+
+    ### Running the bot
+
+
+    Before crawling, we need to update the list of sources so that they have a status.
+
+    ```
+
+    python admin.py update_sources
+
+    ```
+
+
+    Then, to crawl the blogs in a multithreaded fashion
+
+    ```
+
+    python admin.py crawl_threaded -l 1000 -d 5000 -n 16
+
+    ```
+
+
+    When the crawl is done, or even while it is in progress, we need to update
+
+    the numbers that are used for the "relevant ingredients". This can be run
+
+    several times and should be run one final time after the crawl is done.
+
+    ```
+
+    python admin.py calc_dfs
+
+    ```
+
+
+
+    '
+  repo_url: https://github.com/valerierose/feastie
